@@ -1,0 +1,129 @@
+namespace simpleTEST
+{
+    public partial class Form1 : Form
+    {
+
+
+
+
+        public Form1()
+        {
+            InitializeComponent();
+        }
+
+
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        //exclusive checkbox behavior
+        private void kgcheck_CheckedChanged(object sender, EventArgs e)
+        {
+            if (kgcheck.Checked)
+            {
+                lbscheck.Checked = false;
+                ozcheck.Checked = false;
+            }
+        }
+
+        private void lbscheck_CheckedChanged(object sender, EventArgs e)
+        {
+            if (lbscheck.Checked)
+            {
+                kgcheck.Checked = false;
+                ozcheck.Checked = false;
+            }
+        }
+
+        private void ozcheck_CheckedChanged(object sender, EventArgs e)
+        {
+            if (ozcheck.Checked)
+            {
+                lbscheck.Checked = false;
+                kgcheck.Checked = false;
+            }
+        }
+
+        private void Liquidcheck_CheckedChanged(object sender, EventArgs e)
+        {
+            if(Liquidcheck.Checked)
+            {
+                Solidcheck.Checked = false;
+            }
+        }
+
+        private void Solidcheck_CheckedChanged(object sender, EventArgs e)
+        {
+            if (Solidcheck.Checked) 
+            {
+                Liquidcheck.Checked = false;
+            }
+        }
+
+        //calculation
+        private void Run_Click_1(object sender, EventArgs e)
+        {
+
+            Double quantity;
+            Double price;
+            Double priceperkilo;
+            String unit = "";
+            String output;
+
+            price = double.Parse(Pricebox.Text);
+            quantity = double.Parse(Amountbox.Text);
+
+            //set unit
+            if (kgcheck.Checked)
+            {
+                unit = "kgs";
+            }
+
+            if (lbscheck.Checked)
+            {
+                quantity = quantity * 0.453592;
+                unit = "lbs";
+            }
+
+            if (ozcheck.Checked)
+            {
+                quantity = quantity * 0.0283495;
+                unit = "oz";
+            }
+
+            //set price per kilo
+            if (perkilocheck.Checked)
+            {
+                priceperkilo = price;
+                price = priceperkilo * quantity;
+            }
+            priceperkilo = price / quantity;
+
+
+
+            //landed pricing
+            if (Solidcheck.Checked)
+            {
+                priceperkilo = priceperkilo + 3;
+            }
+
+            if (Liquidcheck.Checked)
+            {
+                priceperkilo = priceperkilo + 4;
+            }
+
+
+
+            output = DateTime.Today.ToString("MM/dd/yyyy") + "\r\nPriced from: " + Amountbox.Text + unit + " = $" + Math.Round(price, 2) + " ($" + Math.Round((price / quantity), 2) + "/kg) landed price: $" + Math.Round(priceperkilo, 2) + "/kg";
+            if (copycheck.Checked) 
+            { 
+                System.Windows.Forms.Clipboard.SetText(output); 
+            }
+            Outputbox.Text = output;
+        }
+
+        
+    }
+}
