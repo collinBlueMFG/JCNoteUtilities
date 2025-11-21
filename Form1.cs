@@ -19,7 +19,7 @@ namespace simpleTEST
         }
 
         //exclusive checkbox behavior
-        private void kgcheck_CheckedChanged(object sender, EventArgs e) //testing my github stuff in VS2022 again
+        private void kgcheck_CheckedChanged(object sender, EventArgs e) 
         {
             if (kgcheck.Checked)
             {

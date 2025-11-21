@@ -44,12 +44,17 @@
             lbscheck = new CheckBox();
             ozcheck = new CheckBox();
             copycheck = new CheckBox();
+            tabControl1 = new TabControl();
+            tabPage1 = new TabPage();
+            tabPage2 = new TabPage();
+            tabControl1.SuspendLayout();
+            tabPage1.SuspendLayout();
             SuspendLayout();
             // 
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(12, 9);
+            label1.Location = new Point(16, 19);
             label1.Name = "label1";
             label1.Size = new Size(32, 15);
             label1.TabIndex = 1;
@@ -58,7 +63,7 @@
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(64, 9);
+            label2.Location = new Point(68, 19);
             label2.Name = "label2";
             label2.Size = new Size(54, 15);
             label2.TabIndex = 3;
@@ -66,7 +71,7 @@
             // 
             // Amountbox
             // 
-            Amountbox.Location = new Point(64, 27);
+            Amountbox.Location = new Point(68, 37);
             Amountbox.Name = "Amountbox";
             Amountbox.Size = new Size(89, 23);
             Amountbox.TabIndex = 4;
@@ -74,7 +79,7 @@
             // label3
             // 
             label3.AutoSize = true;
-            label3.Location = new Point(290, 9);
+            label3.Location = new Point(294, 19);
             label3.Name = "label3";
             label3.Size = new Size(67, 15);
             label3.TabIndex = 5;
@@ -83,7 +88,7 @@
             // label4
             // 
             label4.AutoSize = true;
-            label4.Location = new Point(13, 104);
+            label4.Location = new Point(17, 114);
             label4.Name = "label4";
             label4.Size = new Size(45, 15);
             label4.TabIndex = 7;
@@ -91,7 +96,7 @@
             // 
             // Pricebox
             // 
-            Pricebox.Location = new Point(168, 27);
+            Pricebox.Location = new Point(172, 37);
             Pricebox.Name = "Pricebox";
             Pricebox.Size = new Size(95, 23);
             Pricebox.TabIndex = 8;
@@ -99,7 +104,7 @@
             // label5
             // 
             label5.AutoSize = true;
-            label5.Location = new Point(168, 9);
+            label5.Location = new Point(172, 19);
             label5.Name = "label5";
             label5.Size = new Size(33, 15);
             label5.TabIndex = 9;
@@ -108,7 +113,7 @@
             // perkilocheck
             // 
             perkilocheck.AutoSize = true;
-            perkilocheck.Location = new Point(168, 56);
+            perkilocheck.Location = new Point(172, 66);
             perkilocheck.Name = "perkilocheck";
             perkilocheck.Size = new Size(116, 19);
             perkilocheck.TabIndex = 10;
@@ -117,7 +122,7 @@
             // 
             // Outputbox
             // 
-            Outputbox.Location = new Point(16, 129);
+            Outputbox.Location = new Point(20, 139);
             Outputbox.Multiline = true;
             Outputbox.Name = "Outputbox";
             Outputbox.ScrollBars = ScrollBars.Both;
@@ -126,7 +131,7 @@
             // 
             // Run
             // 
-            Run.Location = new Point(64, 56);
+            Run.Location = new Point(68, 66);
             Run.Name = "Run";
             Run.Size = new Size(89, 43);
             Run.TabIndex = 12;
@@ -137,7 +142,7 @@
             // Solidcheck
             // 
             Solidcheck.AutoSize = true;
-            Solidcheck.Location = new Point(290, 27);
+            Solidcheck.Location = new Point(294, 37);
             Solidcheck.Name = "Solidcheck";
             Solidcheck.Size = new Size(83, 19);
             Solidcheck.TabIndex = 13;
@@ -148,7 +153,7 @@
             // Liquidcheck
             // 
             Liquidcheck.AutoSize = true;
-            Liquidcheck.Location = new Point(290, 52);
+            Liquidcheck.Location = new Point(294, 62);
             Liquidcheck.Name = "Liquidcheck";
             Liquidcheck.Size = new Size(90, 19);
             Liquidcheck.TabIndex = 14;
@@ -159,7 +164,7 @@
             // kgcheck
             // 
             kgcheck.AutoSize = true;
-            kgcheck.Location = new Point(12, 27);
+            kgcheck.Location = new Point(16, 37);
             kgcheck.Name = "kgcheck";
             kgcheck.Size = new Size(44, 19);
             kgcheck.TabIndex = 15;
@@ -170,7 +175,7 @@
             // lbscheck
             // 
             lbscheck.AutoSize = true;
-            lbscheck.Location = new Point(12, 52);
+            lbscheck.Location = new Point(16, 62);
             lbscheck.Name = "lbscheck";
             lbscheck.Size = new Size(41, 19);
             lbscheck.TabIndex = 16;
@@ -181,7 +186,7 @@
             // ozcheck
             // 
             ozcheck.AutoSize = true;
-            ozcheck.Location = new Point(12, 77);
+            ozcheck.Location = new Point(16, 87);
             ozcheck.Name = "ozcheck";
             ozcheck.Size = new Size(38, 19);
             ozcheck.TabIndex = 17;
@@ -193,39 +198,72 @@
             // 
             copycheck.AutoSize = true;
             copycheck.Font = new Font("Segoe UI", 8F);
-            copycheck.Location = new Point(64, 106);
+            copycheck.Location = new Point(68, 116);
             copycheck.Name = "copycheck";
             copycheck.Size = new Size(210, 17);
             copycheck.TabIndex = 18;
             copycheck.Text = "Copy output to clipboard when run";
             copycheck.UseVisualStyleBackColor = true;
             // 
+            // tabControl1
+            // 
+            tabControl1.Controls.Add(tabPage1);
+            tabControl1.Controls.Add(tabPage2);
+            tabControl1.Location = new Point(9, 17);
+            tabControl1.Name = "tabControl1";
+            tabControl1.SelectedIndex = 0;
+            tabControl1.Size = new Size(413, 249);
+            tabControl1.TabIndex = 19;
+            // 
+            // tabPage1
+            // 
+            tabPage1.Controls.Add(label1);
+            tabPage1.Controls.Add(Outputbox);
+            tabPage1.Controls.Add(copycheck);
+            tabPage1.Controls.Add(Liquidcheck);
+            tabPage1.Controls.Add(label4);
+            tabPage1.Controls.Add(label2);
+            tabPage1.Controls.Add(Pricebox);
+            tabPage1.Controls.Add(kgcheck);
+            tabPage1.Controls.Add(ozcheck);
+            tabPage1.Controls.Add(Solidcheck);
+            tabPage1.Controls.Add(perkilocheck);
+            tabPage1.Controls.Add(label3);
+            tabPage1.Controls.Add(Amountbox);
+            tabPage1.Controls.Add(label5);
+            tabPage1.Controls.Add(Run);
+            tabPage1.Controls.Add(lbscheck);
+            tabPage1.Location = new Point(4, 24);
+            tabPage1.Name = "tabPage1";
+            tabPage1.Padding = new Padding(3);
+            tabPage1.Size = new Size(405, 221);
+            tabPage1.TabIndex = 0;
+            tabPage1.Text = "JC Note Generator";
+            tabPage1.UseVisualStyleBackColor = true;
+            // 
+            // tabPage2
+            // 
+            tabPage2.Location = new Point(4, 24);
+            tabPage2.Name = "tabPage2";
+            tabPage2.Padding = new Padding(3);
+            tabPage2.Size = new Size(405, 221);
+            tabPage2.TabIndex = 1;
+            tabPage2.Text = "Surplus Template";
+            tabPage2.UseVisualStyleBackColor = true;
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(431, 197);
-            Controls.Add(copycheck);
-            Controls.Add(ozcheck);
-            Controls.Add(lbscheck);
-            Controls.Add(kgcheck);
-            Controls.Add(Liquidcheck);
-            Controls.Add(Solidcheck);
-            Controls.Add(Run);
-            Controls.Add(Outputbox);
-            Controls.Add(perkilocheck);
-            Controls.Add(label5);
-            Controls.Add(Pricebox);
-            Controls.Add(label4);
-            Controls.Add(label3);
-            Controls.Add(Amountbox);
-            Controls.Add(label2);
-            Controls.Add(label1);
+            ClientSize = new Size(441, 289);
+            Controls.Add(tabControl1);
             Name = "Form1";
             Text = "JC Note generator";
             Load += Form1_Load;
+            tabControl1.ResumeLayout(false);
+            tabPage1.ResumeLayout(false);
+            tabPage1.PerformLayout();
             ResumeLayout(false);
-            PerformLayout();
         }
 
         #endregion
@@ -245,5 +283,8 @@
         private CheckBox lbscheck;
         private CheckBox ozcheck;
         private CheckBox copycheck;
+        private TabControl tabControl1;
+        private TabPage tabPage1;
+        private TabPage tabPage2;
     }
 }
