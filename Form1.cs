@@ -123,5 +123,20 @@ namespace simpleTEST
             }
             Outputbox.Text = output;
         }
+
+        private void templaterun_Click(object sender, EventArgs e)
+        {
+            double price;
+            double[] priceArr;
+
+            double lprice;
+            double[] lpriceArr;
+
+            double moq;
+            double[] moqArr;
+            
+            
+            
+        }
     }
 }

@@ -296,6 +296,7 @@
             templaterun.TabIndex = 10;
             templaterun.Text = "Generate";
             templaterun.UseVisualStyleBackColor = true;
+            templaterun.Click += templaterun_Click;
             // 
             // textBox1
             // 
@@ -314,7 +315,7 @@
             // 
             // label6
             // 
-            label6.Location = new Point(6, 76);
+            label6.Location = new Point(6, 66);
             label6.Name = "label6";
             label6.Size = new Size(279, 41);
             label6.TabIndex = 7;
@@ -370,7 +371,6 @@
             // 
             // kgPerUnit
             // 
-            kgPerUnit.Anchor = AnchorStyles.None;
             kgPerUnit.AutoSize = true;
             kgPerUnit.Location = new Point(7, 9);
             kgPerUnit.Name = "kgPerUnit";
