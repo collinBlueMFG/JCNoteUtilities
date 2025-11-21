@@ -47,8 +47,21 @@
             tabControl1 = new TabControl();
             tabPage1 = new TabPage();
             tabPage2 = new TabPage();
+            kgPerUnit = new Label();
+            UnitKgInput = new TextBox();
+            Prices = new Label();
+            pricesbox = new TextBox();
+            moqbox = new Label();
+            moxinput = new TextBox();
+            outputlabel = new Label();
+            textBox1 = new TextBox();
+            label6 = new Label();
+            outputtextbox = new TextBox();
+            templaterun = new Button();
+            checkBox1 = new CheckBox();
             tabControl1.SuspendLayout();
             tabPage1.SuspendLayout();
+            tabPage2.SuspendLayout();
             SuspendLayout();
             // 
             // label1
@@ -243,6 +256,19 @@
             // 
             // tabPage2
             // 
+            tabPage2.AutoScroll = true;
+            tabPage2.Controls.Add(checkBox1);
+            tabPage2.Controls.Add(templaterun);
+            tabPage2.Controls.Add(textBox1);
+            tabPage2.Controls.Add(outputtextbox);
+            tabPage2.Controls.Add(label6);
+            tabPage2.Controls.Add(moqbox);
+            tabPage2.Controls.Add(pricesbox);
+            tabPage2.Controls.Add(moxinput);
+            tabPage2.Controls.Add(Prices);
+            tabPage2.Controls.Add(outputlabel);
+            tabPage2.Controls.Add(UnitKgInput);
+            tabPage2.Controls.Add(kgPerUnit);
             tabPage2.Location = new Point(4, 24);
             tabPage2.Name = "tabPage2";
             tabPage2.Padding = new Padding(3);
@@ -250,6 +276,107 @@
             tabPage2.TabIndex = 1;
             tabPage2.Text = "Surplus Template";
             tabPage2.UseVisualStyleBackColor = true;
+            // 
+            // kgPerUnit
+            // 
+            kgPerUnit.Anchor = AnchorStyles.None;
+            kgPerUnit.AutoSize = true;
+            kgPerUnit.Location = new Point(7, 9);
+            kgPerUnit.Name = "kgPerUnit";
+            kgPerUnit.Size = new Size(76, 15);
+            kgPerUnit.TabIndex = 0;
+            kgPerUnit.Text = "Enter kg/unit";
+            // 
+            // UnitKgInput
+            // 
+            UnitKgInput.Location = new Point(89, 6);
+            UnitKgInput.Name = "UnitKgInput";
+            UnitKgInput.Size = new Size(62, 23);
+            UnitKgInput.TabIndex = 1;
+            // 
+            // Prices
+            // 
+            Prices.AutoSize = true;
+            Prices.Location = new Point(6, 32);
+            Prices.Name = "Prices";
+            Prices.Size = new Size(259, 15);
+            Prices.TabIndex = 2;
+            Prices.Text = "$/kg (if multiple, enter as comma separated list)";
+            // 
+            // pricesbox
+            // 
+            pricesbox.Location = new Point(19, 50);
+            pricesbox.Name = "pricesbox";
+            pricesbox.Size = new Size(246, 23);
+            pricesbox.TabIndex = 3;
+            // 
+            // moqbox
+            // 
+            moqbox.AutoSize = true;
+            moqbox.Location = new Point(6, 136);
+            moqbox.Name = "moqbox";
+            moqbox.Size = new Size(261, 15);
+            moqbox.TabIndex = 4;
+            moqbox.Text = "MOQ (if multiple enter as comma separated list)";
+            // 
+            // moxinput
+            // 
+            moxinput.Location = new Point(19, 154);
+            moxinput.Name = "moxinput";
+            moxinput.Size = new Size(246, 23);
+            moxinput.TabIndex = 5;
+            // 
+            // outputlabel
+            // 
+            outputlabel.AutoSize = true;
+            outputlabel.Location = new Point(6, 185);
+            outputlabel.Name = "outputlabel";
+            outputlabel.Size = new Size(48, 15);
+            outputlabel.TabIndex = 6;
+            outputlabel.Text = "Output:";
+            // 
+            // textBox1
+            // 
+            textBox1.Location = new Point(19, 110);
+            textBox1.Name = "textBox1";
+            textBox1.Size = new Size(246, 23);
+            textBox1.TabIndex = 8;
+            // 
+            // label6
+            // 
+            label6.Location = new Point(6, 76);
+            label6.Name = "label6";
+            label6.Size = new Size(279, 41);
+            label6.TabIndex = 7;
+            label6.Text = "Landed $/kg (if multiple, enter as comma separated list. S/L can be used for solid/liquid pricing)";
+            // 
+            // outputtextbox
+            // 
+            outputtextbox.Location = new Point(19, 204);
+            outputtextbox.Multiline = true;
+            outputtextbox.Name = "outputtextbox";
+            outputtextbox.Size = new Size(345, 97);
+            outputtextbox.TabIndex = 9;
+            // 
+            // templaterun
+            // 
+            templaterun.Location = new Point(286, 110);
+            templaterun.Name = "templaterun";
+            templaterun.Size = new Size(96, 61);
+            templaterun.TabIndex = 10;
+            templaterun.Text = "Generate";
+            templaterun.UseVisualStyleBackColor = true;
+            // 
+            // checkBox1
+            // 
+            checkBox1.AutoSize = true;
+            checkBox1.Font = new Font("Segoe UI", 8F);
+            checkBox1.Location = new Point(60, 185);
+            checkBox1.Name = "checkBox1";
+            checkBox1.Size = new Size(210, 17);
+            checkBox1.TabIndex = 19;
+            checkBox1.Text = "Copy output to clipboard when run";
+            checkBox1.UseVisualStyleBackColor = true;
             // 
             // Form1
             // 
@@ -263,6 +390,8 @@
             tabControl1.ResumeLayout(false);
             tabPage1.ResumeLayout(false);
             tabPage1.PerformLayout();
+            tabPage2.ResumeLayout(false);
+            tabPage2.PerformLayout();
             ResumeLayout(false);
         }
 
@@ -286,5 +415,17 @@
         private TabControl tabControl1;
         private TabPage tabPage1;
         private TabPage tabPage2;
+        private Label kgPerUnit;
+        private TextBox UnitKgInput;
+        private Label Prices;
+        private TextBox pricesbox;
+        private Label moqbox;
+        private TextBox moxinput;
+        private TextBox textBox1;
+        private Label label6;
+        private Label outputlabel;
+        private TextBox outputtextbox;
+        private Button templaterun;
+        private CheckBox checkBox1;
     }
 }

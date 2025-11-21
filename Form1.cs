@@ -19,7 +19,7 @@ namespace simpleTEST
         }
 
         //exclusive checkbox behavior
-        private void kgcheck_CheckedChanged(object sender, EventArgs e) 
+        private void kgcheck_CheckedChanged(object sender, EventArgs e)
         {
             if (kgcheck.Checked)
             {
@@ -123,7 +123,5 @@ namespace simpleTEST
             }
             Outputbox.Text = output;
         }
-
-
     }
 }
