@@ -19,7 +19,7 @@ namespace simpleTEST
         }
 
         //exclusive checkbox behavior
-        private void kgcheck_CheckedChanged(object sender, EventArgs e)
+        private void kgcheck_CheckedChanged(object sender, EventArgs e) //testing my github stuff in VS2022 again
         {
             if (kgcheck.Checked)
             {
@@ -48,7 +48,7 @@ namespace simpleTEST
 
         private void Liquidcheck_CheckedChanged(object sender, EventArgs e)
         {
-            if(Liquidcheck.Checked)
+            if (Liquidcheck.Checked)
             {
                 Solidcheck.Checked = false;
             }
@@ -56,7 +56,7 @@ namespace simpleTEST
 
         private void Solidcheck_CheckedChanged(object sender, EventArgs e)
         {
-            if (Solidcheck.Checked) 
+            if (Solidcheck.Checked)
             {
                 Liquidcheck.Checked = false;
             }
@@ -117,13 +117,13 @@ namespace simpleTEST
 
 
             output = DateTime.Today.ToString("MM/dd/yyyy") + "\r\nPriced from: " + Amountbox.Text + unit + " = $" + Math.Round(price, 2) + " ($" + Math.Round((price / quantity), 2) + "/kg) landed price: $" + Math.Round(priceperkilo, 2) + "/kg";
-            if (copycheck.Checked) 
-            { 
-                System.Windows.Forms.Clipboard.SetText(output); 
+            if (copycheck.Checked)
+            {
+                System.Windows.Forms.Clipboard.SetText(output);
             }
             Outputbox.Text = output;
         }
 
-        
+
     }
 }
