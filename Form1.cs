@@ -134,6 +134,13 @@ namespace simpleTEST
 
             double moq;
             double[] moqArr;
+
+            double p1, p2, p3, lp1, lp2, lp3, req1, req2, req3;
+           
+
+
+
+
             
             
             

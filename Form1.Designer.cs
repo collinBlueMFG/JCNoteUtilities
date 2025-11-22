@@ -315,7 +315,7 @@
             // 
             // label6
             // 
-            label6.Location = new Point(6, 66);
+            label6.Location = new Point(7, 76);
             label6.Name = "label6";
             label6.Size = new Size(279, 41);
             label6.TabIndex = 7;
