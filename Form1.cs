@@ -1,3 +1,5 @@
+using System.Net.Security;
+
 namespace simpleTEST
 {
     public partial class Form1 : Form
@@ -81,6 +83,16 @@ namespace simpleTEST
             {
                 unit = Amountbox.Text.Split(";")[1];
                 quantity = double.Parse(Amountbox.Text.Split(";")[0]);
+
+                if (unit == "lbs")
+                {
+                    quantity = quantity * 0.453592;
+                }
+                
+                if (unit == "oz")
+                {
+                    quantity = quantity * 0.0283495;
+                }
             }
             else
             {
@@ -131,7 +143,7 @@ namespace simpleTEST
 
 
 
-            output = DateTime.Today.ToString("MM/dd/yyyy") + "\r\nPriced from: " + Amountbox.Text + unit + " = $" + Math.Round(price, 2) + " ($" + Math.Round((price / quantity), 2) + "/kg) landed price: $" + Math.Round(priceperkilo, 2) + "/kg";
+            output = DateTime.Today.ToString("MM/dd/yyyy") + "\r\nPriced from: " + Amountbox.Text.Split(";")[0] + unit + " = $" + Math.Round(price, 2) + " ($" + Math.Round((price / quantity), 2) + "/kg) landed price: $" + Math.Round(priceperkilo, 2) + "/kg";
             if (copycheck.Checked)
             {
                 System.Windows.Forms.Clipboard.SetText(output);
