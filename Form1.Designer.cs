@@ -405,7 +405,7 @@
             ClientSize = new Size(445, 409);
             Controls.Add(tabControl1);
             Name = "Form1";
-            Text = "100k";
+            Text = "JC Note Utility";
             Load += Form1_Load;
             tabControl1.ResumeLayout(false);
             tabPage1.ResumeLayout(false);
