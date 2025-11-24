@@ -47,6 +47,8 @@
             tabControl1 = new TabControl();
             tabPage1 = new TabPage();
             tabPage2 = new TabPage();
+            NumberOfUnitsBox = new TextBox();
+            label7 = new Label();
             TemplateCopyCheck = new CheckBox();
             templaterun = new Button();
             TemplateLandingBox = new TextBox();
@@ -59,8 +61,6 @@
             outputlabel = new Label();
             TemplateUnitKgInput = new TextBox();
             kgPerUnit = new Label();
-            label7 = new Label();
-            NumberOfUnitsBox = new TextBox();
             tabControl1.SuspendLayout();
             tabPage1.SuspendLayout();
             tabPage2.SuspendLayout();
@@ -281,6 +281,22 @@
             tabPage2.Text = "Surplus Template";
             tabPage2.UseVisualStyleBackColor = true;
             // 
+            // NumberOfUnitsBox
+            // 
+            NumberOfUnitsBox.Location = new Point(18, 94);
+            NumberOfUnitsBox.Name = "NumberOfUnitsBox";
+            NumberOfUnitsBox.Size = new Size(246, 23);
+            NumberOfUnitsBox.TabIndex = 21;
+            // 
+            // label7
+            // 
+            label7.AutoSize = true;
+            label7.Location = new Point(7, 76);
+            label7.Name = "label7";
+            label7.Size = new Size(232, 15);
+            label7.TabIndex = 20;
+            label7.Text = "Number of units (as comma separated list)";
+            // 
             // TemplateCopyCheck
             // 
             TemplateCopyCheck.AutoSize = true;
@@ -382,22 +398,6 @@
             kgPerUnit.TabIndex = 0;
             kgPerUnit.Text = "Enter kg/unit";
             // 
-            // label7
-            // 
-            label7.AutoSize = true;
-            label7.Location = new Point(7, 76);
-            label7.Name = "label7";
-            label7.Size = new Size(232, 15);
-            label7.TabIndex = 20;
-            label7.Text = "Number of units (as comma separated list)";
-            // 
-            // NumberOfUnitsBox
-            // 
-            NumberOfUnitsBox.Location = new Point(18, 94);
-            NumberOfUnitsBox.Name = "NumberOfUnitsBox";
-            NumberOfUnitsBox.Size = new Size(246, 23);
-            NumberOfUnitsBox.TabIndex = 21;
-            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -405,7 +405,7 @@
             ClientSize = new Size(445, 409);
             Controls.Add(tabControl1);
             Name = "Form1";
-            Text = "JC Note generator";
+            Text = "100k";
             Load += Form1_Load;
             tabControl1.ResumeLayout(false);
             tabPage1.ResumeLayout(false);

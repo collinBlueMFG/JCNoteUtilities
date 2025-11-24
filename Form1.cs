@@ -10,7 +10,6 @@ namespace simpleTEST
 
 
 
-	//neovim test phrase
         public Form1()
         {
             InitializeComponent();
@@ -131,30 +130,48 @@ namespace simpleTEST
 
         private void templaterun_Click(object sender, EventArgs e)
         {
-            String[] SunitsArr;
+            String[] tempStrArr;
             double[] unitsArr;
 
-            double price;
             double[] priceArr;
 
-            double lprice;
             double[] lpriceArr;
 
-            double moq;
             double[] moqArr;
             
-            SunitsArr = TemplateUnitKgInput.Text.Split(',');
-            unitsArr = new double[SunitsArr.Length];
 
-            for (int i = 0; i < SunitsArr.Length; i++)
+
+            //going to parse all these as double[], if not in list then return array len 1.
+            tempStrArr = TemplateUnitKgInput.Text.Split(',');
+            unitsArr = new double[tempStrArr.Length];
+
+            for (int i = 0; i < tempStrArr.Length; i++)
             {
-                unitsArr[i] = double.Parse(SunitsArr[i]);
+                unitsArr[i] = double.Parse(tempStrArr[i]);
+            }
+            
+            tempStrArr = TemplatePricesBox.Text.Split(",");
+            priceArr = new double[tempStrArr.Length];
+            for (int i = 0; i < tempStrArr.Length; i++)
+            {
+                priceArr[i] = double.Parse(tempStrArr[i]);
             }
             
             
-            
+            tempStrArr = TemplatePricesBox.Text.Split(",");
+            lpriceArr = new double[tempStrArr.Length];
+            for (int i = 0; i < tempStrArr.Length; i++)
+            {
+                lpriceArr[i] = double.Parse(tempStrArr[i]);
+            }
             
 	    	    
+            tempStrArr = TemplatePricesBox.Text.Split(",");
+            moqArr = new double[tempStrArr.Length];
+            for (int i = 0; i < tempStrArr.Length; i++)
+            {
+                moqArr[i] = double.Parse(tempStrArr[i]);
+            }
 
 
 
