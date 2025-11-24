@@ -76,27 +76,38 @@ namespace simpleTEST
             String unit = "";
             String output;
 
+            //adds functionality to enter amount + ; + unit
+            if (Amountbox.Text.Contains(";"))
+            {
+                unit = Amountbox.Text.Split(";")[1];
+                quantity = double.Parse(Amountbox.Text.Split(";")[0]);
+            }
+            else
+            {
+                quantity = double.Parse(Amountbox.Text);
+                
+                //set unit
+                if (kgcheck.Checked)
+                {
+                    unit = "kgs";
+                }
+
+                if (lbscheck.Checked)
+                {
+                    quantity = quantity * 0.453592;
+                    unit = "lbs";
+                }
+
+                if (ozcheck.Checked)
+                {
+                    quantity = quantity * 0.0283495;
+                    unit = "oz";
+                }
+            }
             price = double.Parse(Pricebox.Text);
-            quantity = double.Parse(Amountbox.Text);
 
-            //set unit
-            if (kgcheck.Checked)
-            {
-                unit = "kgs";
-            }
-
-            if (lbscheck.Checked)
-            {
-                quantity = quantity * 0.453592;
-                unit = "lbs";
-            }
-
-            if (ozcheck.Checked)
-            {
-                quantity = quantity * 0.0283495;
-                unit = "oz";
-            }
-
+            
+            
             //set price per kilo
             if (perkilocheck.Checked)
             {
@@ -104,7 +115,7 @@ namespace simpleTEST
                 price = priceperkilo * quantity;
             }
             priceperkilo = price / quantity;
-
+            
 
 
             //landed pricing
