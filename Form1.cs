@@ -126,6 +126,9 @@ namespace simpleTEST
 
         private void templaterun_Click(object sender, EventArgs e)
         {
+            String[] SunitsArr;
+            double[] unitsArr;
+
             double price;
             double[] priceArr;
 
@@ -134,8 +137,16 @@ namespace simpleTEST
 
             double moq;
             double[] moqArr;
+            
+            SunitsArr = TemplateUnitKgInput.Text.Split(',');
+            unitsArr = new double[SunitsArr.Length];
 
-
+            for (int i = 0; i < SunitsArr.Length; i++)
+            {
+                unitsArr[i] = double.Parse(SunitsArr[i]);
+            }
+            
+            
             
             
 	    	    
