@@ -47,18 +47,20 @@
             tabControl1 = new TabControl();
             tabPage1 = new TabPage();
             tabPage2 = new TabPage();
-            checkBox1 = new CheckBox();
+            TemplateCopyCheck = new CheckBox();
             templaterun = new Button();
-            textBox1 = new TextBox();
-            outputtextbox = new TextBox();
+            TemplateLandingBox = new TextBox();
+            TemplateOutputBox = new TextBox();
             label6 = new Label();
             moqbox = new Label();
-            pricesbox = new TextBox();
-            moxinput = new TextBox();
+            TemplatePricesBox = new TextBox();
+            TemplateMoqInput = new TextBox();
             Prices = new Label();
             outputlabel = new Label();
-            UnitKgInput = new TextBox();
+            TemplateUnitKgInput = new TextBox();
             kgPerUnit = new Label();
+            label7 = new Label();
+            NumberOfUnitsBox = new TextBox();
             tabControl1.SuspendLayout();
             tabPage1.SuspendLayout();
             tabPage2.SuspendLayout();
@@ -225,7 +227,7 @@
             tabControl1.Location = new Point(9, 17);
             tabControl1.Name = "tabControl1";
             tabControl1.SelectedIndex = 0;
-            tabControl1.Size = new Size(413, 249);
+            tabControl1.Size = new Size(424, 380);
             tabControl1.TabIndex = 19;
             // 
             // tabPage1
@@ -249,7 +251,7 @@
             tabPage1.Location = new Point(4, 24);
             tabPage1.Name = "tabPage1";
             tabPage1.Padding = new Padding(3);
-            tabPage1.Size = new Size(405, 221);
+            tabPage1.Size = new Size(416, 352);
             tabPage1.TabIndex = 0;
             tabPage1.Text = "JC Note Generator";
             tabPage1.UseVisualStyleBackColor = true;
@@ -257,40 +259,42 @@
             // tabPage2
             // 
             tabPage2.AutoScroll = true;
-            tabPage2.Controls.Add(checkBox1);
+            tabPage2.Controls.Add(NumberOfUnitsBox);
+            tabPage2.Controls.Add(label7);
+            tabPage2.Controls.Add(TemplateCopyCheck);
             tabPage2.Controls.Add(templaterun);
-            tabPage2.Controls.Add(textBox1);
-            tabPage2.Controls.Add(outputtextbox);
+            tabPage2.Controls.Add(TemplateLandingBox);
+            tabPage2.Controls.Add(TemplateOutputBox);
             tabPage2.Controls.Add(label6);
             tabPage2.Controls.Add(moqbox);
-            tabPage2.Controls.Add(pricesbox);
-            tabPage2.Controls.Add(moxinput);
+            tabPage2.Controls.Add(TemplatePricesBox);
+            tabPage2.Controls.Add(TemplateMoqInput);
             tabPage2.Controls.Add(Prices);
             tabPage2.Controls.Add(outputlabel);
-            tabPage2.Controls.Add(UnitKgInput);
+            tabPage2.Controls.Add(TemplateUnitKgInput);
             tabPage2.Controls.Add(kgPerUnit);
             tabPage2.Location = new Point(4, 24);
             tabPage2.Name = "tabPage2";
             tabPage2.Padding = new Padding(3);
-            tabPage2.Size = new Size(405, 221);
+            tabPage2.Size = new Size(416, 352);
             tabPage2.TabIndex = 1;
             tabPage2.Text = "Surplus Template";
             tabPage2.UseVisualStyleBackColor = true;
             // 
-            // checkBox1
+            // TemplateCopyCheck
             // 
-            checkBox1.AutoSize = true;
-            checkBox1.Font = new Font("Segoe UI", 8F);
-            checkBox1.Location = new Point(60, 185);
-            checkBox1.Name = "checkBox1";
-            checkBox1.Size = new Size(210, 17);
-            checkBox1.TabIndex = 19;
-            checkBox1.Text = "Copy output to clipboard when run";
-            checkBox1.UseVisualStyleBackColor = true;
+            TemplateCopyCheck.AutoSize = true;
+            TemplateCopyCheck.Font = new Font("Segoe UI", 8F);
+            TemplateCopyCheck.Location = new Point(56, 227);
+            TemplateCopyCheck.Name = "TemplateCopyCheck";
+            TemplateCopyCheck.Size = new Size(210, 17);
+            TemplateCopyCheck.TabIndex = 19;
+            TemplateCopyCheck.Text = "Copy output to clipboard when run";
+            TemplateCopyCheck.UseVisualStyleBackColor = true;
             // 
             // templaterun
             // 
-            templaterun.Location = new Point(286, 110);
+            templaterun.Location = new Point(285, 154);
             templaterun.Name = "templaterun";
             templaterun.Size = new Size(96, 61);
             templaterun.TabIndex = 10;
@@ -298,24 +302,24 @@
             templaterun.UseVisualStyleBackColor = true;
             templaterun.Click += templaterun_Click;
             // 
-            // textBox1
+            // TemplateLandingBox
             // 
-            textBox1.Location = new Point(19, 110);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(246, 23);
-            textBox1.TabIndex = 8;
+            TemplateLandingBox.Location = new Point(18, 154);
+            TemplateLandingBox.Name = "TemplateLandingBox";
+            TemplateLandingBox.Size = new Size(246, 23);
+            TemplateLandingBox.TabIndex = 8;
             // 
-            // outputtextbox
+            // TemplateOutputBox
             // 
-            outputtextbox.Location = new Point(19, 204);
-            outputtextbox.Multiline = true;
-            outputtextbox.Name = "outputtextbox";
-            outputtextbox.Size = new Size(345, 97);
-            outputtextbox.TabIndex = 9;
+            TemplateOutputBox.Location = new Point(15, 246);
+            TemplateOutputBox.Multiline = true;
+            TemplateOutputBox.Name = "TemplateOutputBox";
+            TemplateOutputBox.Size = new Size(345, 97);
+            TemplateOutputBox.TabIndex = 9;
             // 
             // label6
             // 
-            label6.Location = new Point(7, 76);
+            label6.Location = new Point(6, 120);
             label6.Name = "label6";
             label6.Size = new Size(279, 41);
             label6.TabIndex = 7;
@@ -324,25 +328,25 @@
             // moqbox
             // 
             moqbox.AutoSize = true;
-            moqbox.Location = new Point(6, 136);
+            moqbox.Location = new Point(5, 180);
             moqbox.Name = "moqbox";
             moqbox.Size = new Size(261, 15);
             moqbox.TabIndex = 4;
             moqbox.Text = "MOQ (if multiple enter as comma separated list)";
             // 
-            // pricesbox
+            // TemplatePricesBox
             // 
-            pricesbox.Location = new Point(19, 50);
-            pricesbox.Name = "pricesbox";
-            pricesbox.Size = new Size(246, 23);
-            pricesbox.TabIndex = 3;
+            TemplatePricesBox.Location = new Point(18, 50);
+            TemplatePricesBox.Name = "TemplatePricesBox";
+            TemplatePricesBox.Size = new Size(246, 23);
+            TemplatePricesBox.TabIndex = 3;
             // 
-            // moxinput
+            // TemplateMoqInput
             // 
-            moxinput.Location = new Point(19, 154);
-            moxinput.Name = "moxinput";
-            moxinput.Size = new Size(246, 23);
-            moxinput.TabIndex = 5;
+            TemplateMoqInput.Location = new Point(18, 198);
+            TemplateMoqInput.Name = "TemplateMoqInput";
+            TemplateMoqInput.Size = new Size(246, 23);
+            TemplateMoqInput.TabIndex = 5;
             // 
             // Prices
             // 
@@ -356,18 +360,18 @@
             // outputlabel
             // 
             outputlabel.AutoSize = true;
-            outputlabel.Location = new Point(6, 185);
+            outputlabel.Location = new Point(2, 227);
             outputlabel.Name = "outputlabel";
             outputlabel.Size = new Size(48, 15);
             outputlabel.TabIndex = 6;
             outputlabel.Text = "Output:";
             // 
-            // UnitKgInput
+            // TemplateUnitKgInput
             // 
-            UnitKgInput.Location = new Point(89, 6);
-            UnitKgInput.Name = "UnitKgInput";
-            UnitKgInput.Size = new Size(62, 23);
-            UnitKgInput.TabIndex = 1;
+            TemplateUnitKgInput.Location = new Point(89, 6);
+            TemplateUnitKgInput.Name = "TemplateUnitKgInput";
+            TemplateUnitKgInput.Size = new Size(62, 23);
+            TemplateUnitKgInput.TabIndex = 1;
             // 
             // kgPerUnit
             // 
@@ -378,11 +382,27 @@
             kgPerUnit.TabIndex = 0;
             kgPerUnit.Text = "Enter kg/unit";
             // 
+            // label7
+            // 
+            label7.AutoSize = true;
+            label7.Location = new Point(7, 76);
+            label7.Name = "label7";
+            label7.Size = new Size(232, 15);
+            label7.TabIndex = 20;
+            label7.Text = "Number of units (as comma separated list)";
+            // 
+            // NumberOfUnitsBox
+            // 
+            NumberOfUnitsBox.Location = new Point(18, 94);
+            NumberOfUnitsBox.Name = "NumberOfUnitsBox";
+            NumberOfUnitsBox.Size = new Size(246, 23);
+            NumberOfUnitsBox.TabIndex = 21;
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(441, 289);
+            ClientSize = new Size(445, 409);
             Controls.Add(tabControl1);
             Name = "Form1";
             Text = "JC Note generator";
@@ -416,16 +436,18 @@
         private TabPage tabPage1;
         private TabPage tabPage2;
         private Label kgPerUnit;
-        private TextBox UnitKgInput;
+        private TextBox TemplateUnitKgInput;
         private Label Prices;
-        private TextBox pricesbox;
+        private TextBox TemplatePricesBox;
         private Label moqbox;
-        private TextBox moxinput;
-        private TextBox textBox1;
+        private TextBox TemplateMoqInput;
+        private TextBox TemplateLandingBox;
         private Label label6;
         private Label outputlabel;
-        private TextBox outputtextbox;
+        private TextBox TemplateOutputBox;
         private Button templaterun;
-        private CheckBox checkBox1;
+        private CheckBox TemplateCopyCheck;
+        private Label label7;
+        private TextBox NumberOfUnitsBox;
     }
 }
