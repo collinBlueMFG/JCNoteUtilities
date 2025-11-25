@@ -61,6 +61,7 @@
             outputlabel = new Label();
             TemplateUnitKgInput = new TextBox();
             kgPerUnit = new Label();
+            label8 = new Label();
             tabControl1.SuspendLayout();
             tabPage1.SuspendLayout();
             tabPage2.SuspendLayout();
@@ -69,7 +70,7 @@
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(16, 19);
+            label1.Location = new Point(129, 15);
             label1.Name = "label1";
             label1.Size = new Size(32, 15);
             label1.TabIndex = 1;
@@ -78,7 +79,7 @@
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(68, 19);
+            label2.Location = new Point(16, 15);
             label2.Name = "label2";
             label2.Size = new Size(54, 15);
             label2.TabIndex = 3;
@@ -86,7 +87,7 @@
             // 
             // Amountbox
             // 
-            Amountbox.Location = new Point(68, 37);
+            Amountbox.Location = new Point(16, 33);
             Amountbox.Name = "Amountbox";
             Amountbox.Size = new Size(89, 23);
             Amountbox.TabIndex = 4;
@@ -94,7 +95,7 @@
             // label3
             // 
             label3.AutoSize = true;
-            label3.Location = new Point(294, 19);
+            label3.Location = new Point(129, 63);
             label3.Name = "label3";
             label3.Size = new Size(67, 15);
             label3.TabIndex = 5;
@@ -103,7 +104,7 @@
             // label4
             // 
             label4.AutoSize = true;
-            label4.Location = new Point(17, 114);
+            label4.Location = new Point(13, 131);
             label4.Name = "label4";
             label4.Size = new Size(45, 15);
             label4.TabIndex = 7;
@@ -111,7 +112,7 @@
             // 
             // Pricebox
             // 
-            Pricebox.Location = new Point(172, 37);
+            Pricebox.Location = new Point(16, 77);
             Pricebox.Name = "Pricebox";
             Pricebox.Size = new Size(95, 23);
             Pricebox.TabIndex = 8;
@@ -119,7 +120,7 @@
             // label5
             // 
             label5.AutoSize = true;
-            label5.Location = new Point(172, 19);
+            label5.Location = new Point(16, 59);
             label5.Name = "label5";
             label5.Size = new Size(33, 15);
             label5.TabIndex = 9;
@@ -128,7 +129,7 @@
             // perkilocheck
             // 
             perkilocheck.AutoSize = true;
-            perkilocheck.Location = new Point(172, 66);
+            perkilocheck.Location = new Point(16, 106);
             perkilocheck.Name = "perkilocheck";
             perkilocheck.Size = new Size(116, 19);
             perkilocheck.TabIndex = 10;
@@ -137,7 +138,7 @@
             // 
             // Outputbox
             // 
-            Outputbox.Location = new Point(20, 139);
+            Outputbox.Location = new Point(16, 156);
             Outputbox.Multiline = true;
             Outputbox.Name = "Outputbox";
             Outputbox.ScrollBars = ScrollBars.Both;
@@ -146,7 +147,7 @@
             // 
             // Run
             // 
-            Run.Location = new Point(68, 66);
+            Run.Location = new Point(270, 20);
             Run.Name = "Run";
             Run.Size = new Size(89, 43);
             Run.TabIndex = 12;
@@ -157,7 +158,7 @@
             // Solidcheck
             // 
             Solidcheck.AutoSize = true;
-            Solidcheck.Location = new Point(294, 37);
+            Solidcheck.Location = new Point(129, 81);
             Solidcheck.Name = "Solidcheck";
             Solidcheck.Size = new Size(83, 19);
             Solidcheck.TabIndex = 13;
@@ -168,7 +169,7 @@
             // Liquidcheck
             // 
             Liquidcheck.AutoSize = true;
-            Liquidcheck.Location = new Point(294, 62);
+            Liquidcheck.Location = new Point(218, 81);
             Liquidcheck.Name = "Liquidcheck";
             Liquidcheck.Size = new Size(90, 19);
             Liquidcheck.TabIndex = 14;
@@ -179,7 +180,7 @@
             // kgcheck
             // 
             kgcheck.AutoSize = true;
-            kgcheck.Location = new Point(16, 37);
+            kgcheck.Location = new Point(129, 33);
             kgcheck.Name = "kgcheck";
             kgcheck.Size = new Size(44, 19);
             kgcheck.TabIndex = 15;
@@ -190,7 +191,7 @@
             // lbscheck
             // 
             lbscheck.AutoSize = true;
-            lbscheck.Location = new Point(16, 62);
+            lbscheck.Location = new Point(179, 33);
             lbscheck.Name = "lbscheck";
             lbscheck.Size = new Size(41, 19);
             lbscheck.TabIndex = 16;
@@ -201,7 +202,7 @@
             // ozcheck
             // 
             ozcheck.AutoSize = true;
-            ozcheck.Location = new Point(16, 87);
+            ozcheck.Location = new Point(226, 33);
             ozcheck.Name = "ozcheck";
             ozcheck.Size = new Size(38, 19);
             ozcheck.TabIndex = 17;
@@ -213,7 +214,7 @@
             // 
             copycheck.AutoSize = true;
             copycheck.Font = new Font("Segoe UI", 8F);
-            copycheck.Location = new Point(68, 116);
+            copycheck.Location = new Point(64, 133);
             copycheck.Name = "copycheck";
             copycheck.Size = new Size(210, 17);
             copycheck.TabIndex = 18;
@@ -232,6 +233,7 @@
             // 
             // tabPage1
             // 
+            tabPage1.Controls.Add(label8);
             tabPage1.Controls.Add(label1);
             tabPage1.Controls.Add(Outputbox);
             tabPage1.Controls.Add(copycheck);
@@ -398,6 +400,14 @@
             kgPerUnit.TabIndex = 0;
             kgPerUnit.Text = "Enter kg/unit";
             // 
+            // label8
+            // 
+            label8.AutoSize = true;
+            label8.Location = new Point(16, 128);
+            label8.Name = "label8";
+            label8.Size = new Size(0, 15);
+            label8.TabIndex = 19;
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -449,5 +459,6 @@
         private CheckBox TemplateCopyCheck;
         private Label label7;
         private TextBox NumberOfUnitsBox;
+        private Label label8;
     }
 }
