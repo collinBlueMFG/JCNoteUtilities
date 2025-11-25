@@ -131,12 +131,12 @@ namespace simpleTEST
 
 
             //landed pricing
-            if (Solidcheck.Checked)
+            if (Solidcheck.Checked || Amountbox.Text.Split(";")[2] == "s")
             {
                 priceperkilo = priceperkilo + 3;
             }
 
-            if (Liquidcheck.Checked)
+            if (Liquidcheck.Checked || Amountbox.Text.Split(";")[2] == "l")
             {
                 priceperkilo = priceperkilo + 4;
             }
