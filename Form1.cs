@@ -241,13 +241,13 @@ namespace simpleTEST
 
                 if (LiquidGallonCheck.Checked)
                 {
-                    quantity = quantity *0.264172;
+                    quantity = quantity /0.264172;
                     unit = "gal";
                 }
 
                 if (LiquidFlozCheck.Checked)
                 {
-                    quantity = quantity * 33.814;
+                    quantity = quantity / 33.814;
                     unit = "floz";
                 }
             }
