@@ -151,58 +151,6 @@ namespace simpleTEST
             Outputbox.Text = output;
         }
 
-        private void templaterun_Click(object sender, EventArgs e)
-        {
-            String[] tempStrArr;
-            double[] unitsArr;
-
-            double[] priceArr;
-
-            double[] lpriceArr;
-
-            double[] moqArr;
-
-
-
-            //going to parse all these as double[], if not in list then return array len 1.
-            tempStrArr = TemplateUnitKgInput.Text.Split(',');
-            unitsArr = new double[tempStrArr.Length];
-
-            for (int i = 0; i < tempStrArr.Length; i++)
-            {
-                unitsArr[i] = double.Parse(tempStrArr[i]);
-            }
-
-            tempStrArr = TemplatePricesBox.Text.Split(",");
-            priceArr = new double[tempStrArr.Length];
-            for (int i = 0; i < tempStrArr.Length; i++)
-            {
-                priceArr[i] = double.Parse(tempStrArr[i]);
-            }
-
-
-            tempStrArr = TemplatePricesBox.Text.Split(",");
-            lpriceArr = new double[tempStrArr.Length];
-            for (int i = 0; i < tempStrArr.Length; i++)
-            {
-                lpriceArr[i] = double.Parse(tempStrArr[i]);
-            }
-
-
-            tempStrArr = TemplatePricesBox.Text.Split(",");
-            moqArr = new double[tempStrArr.Length];
-            for (int i = 0; i < tempStrArr.Length; i++)
-            {
-                moqArr[i] = double.Parse(tempStrArr[i]);
-            }
-
-
-
-
-
-
-
-        }
 
         private void LiquidRun_Click(object sender, EventArgs e)
         {
@@ -274,6 +222,59 @@ namespace simpleTEST
                 System.Windows.Forms.Clipboard.SetText(output);
             }
             LiquidOutputBox.Text = output;
+        }
+
+        private void templaterun_Click(object sender, EventArgs e)
+        {
+            String[] tempStrArr;
+            double[] unitsArr;
+
+            double[] priceArr;
+
+            double[] lpriceArr;
+
+            double[] moqArr;
+
+
+
+            //going to parse all these as double[], if not in list then return array len 1.
+            tempStrArr = TemplateUnitKgInput.Text.Split(',');
+            unitsArr = new double[tempStrArr.Length];
+
+            for (int i = 0; i < tempStrArr.Length; i++)
+            {
+                unitsArr[i] = double.Parse(tempStrArr[i]);
+            }
+
+            tempStrArr = TemplatePricesBox.Text.Split(",");
+            priceArr = new double[tempStrArr.Length];
+            for (int i = 0; i < tempStrArr.Length; i++)
+            {
+                priceArr[i] = double.Parse(tempStrArr[i]);
+            }
+
+
+            tempStrArr = TemplatePricesBox.Text.Split(",");
+            lpriceArr = new double[tempStrArr.Length];
+            for (int i = 0; i < tempStrArr.Length; i++)
+            {
+                lpriceArr[i] = double.Parse(tempStrArr[i]);
+            }
+
+
+            tempStrArr = TemplatePricesBox.Text.Split(",");
+            moqArr = new double[tempStrArr.Length];
+            for (int i = 0; i < tempStrArr.Length; i++)
+            {
+                moqArr[i] = double.Parse(tempStrArr[i]);
+            }
+
+
+
+
+
+
+
         }
     }
 }
