@@ -1,4 +1,5 @@
 using System.Net.Security;
+using System.Xml;
 
 namespace simpleTEST
 {
@@ -238,43 +239,64 @@ namespace simpleTEST
 
 
             //going to parse all these as double[], if not in list then return array len 1.
+            //FUNCTION WORKFLOW: take all parameters as input, assume columnated format (i.e. order of initial input arrays corresponds-
+            //to their order in columns and assumes same number of elements unless length is one. these values will then be added into the normal string format and added to a "line" string-
+            //the content of which will consist of each column's contents on that row, followed by a number of padding characters (" ") determined by a function up to an arbitrary max character per line limit.
+            //each line string will then be separated by a line break "\r\n" and added to the output box to obtain the final formatted chart.
+
+
+           //initialize double arrays for each input box, then delimit input by "," and add to the array 
             tempStrArr = TemplateUnitKgInput.Text.Split(',');
-            unitsArr = new double[tempStrArr.Length];
-
-            for (int i = 0; i < tempStrArr.Length; i++)
-            {
-                unitsArr[i] = double.Parse(tempStrArr[i]);
-            }
+            unitsArr = cDoubleArr(tempStrArr);
 
             tempStrArr = TemplatePricesBox.Text.Split(",");
-            priceArr = new double[tempStrArr.Length];
-            for (int i = 0; i < tempStrArr.Length; i++)
-            {
-                priceArr[i] = double.Parse(tempStrArr[i]);
-            }
-
+            priceArr = cDoubleArr(tempStrArr);
 
             tempStrArr = TemplatePricesBox.Text.Split(",");
-            lpriceArr = new double[tempStrArr.Length];
-            for (int i = 0; i < tempStrArr.Length; i++)
-            {
-                lpriceArr[i] = double.Parse(tempStrArr[i]);
-            }
-
+            lpriceArr =cDoubleArr(tempStrArr);
 
             tempStrArr = TemplatePricesBox.Text.Split(",");
-            moqArr = new double[tempStrArr.Length];
-            for (int i = 0; i < tempStrArr.Length; i++)
-            {
-                moqArr[i] = double.Parse(tempStrArr[i]);
-            }
+            moqArr = cDoubleArr(tempStrArr);
 
-
+            //So that all these rows can be of an arbitrary length, use for loops to initialize each row into its respective line before sending it to paddingfunc
+            
 
 
 
 
 
         }
+        private static double[] cDoubleArr(string[] arr)
+        {
+            double[] output;
+            output = new double[arr.Length];
+
+            for (int i = 0; i < arr.Length; i++)
+            {
+                output[i] = double.Parse(arr[i]);
+            }
+            return output;
+        }
+
+        private static string PaddingFunc(string rowName, string line, int padValue) //This function takes an input string of 1 row from templaterun_click (3 values separated by spaces) and pads the spaces until it reaches a maximum character limit
+        {
+            string output = "";
+            string[] lineArr = line.Split(" ");
+           
+            
+            for(int j = 0; j < lineArr.Length-1; j++)
+            {
+                while (lineArr[j].Length < padValue)
+                {
+                    lineArr[j] = lineArr[j] + " ";
+                }
+                output = output + lineArr[j];
+            }
+            
+            
+            return output;
+        }
+
+
     }
 }
