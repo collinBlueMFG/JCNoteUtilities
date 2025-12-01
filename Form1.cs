@@ -3,6 +3,7 @@ using System.Xml;
 
 namespace simpleTEST
 {
+    //THIS ALLLLLLL NEEDS ERROR HANDLING
     public partial class Form1 : Form
     {
 
@@ -80,76 +81,84 @@ namespace simpleTEST
             String output;
 
             //adds functionality to enter amount + ; + unit
-            if (Amountbox.Text.Contains(";"))
-            {
-                unit = Amountbox.Text.Split(";")[1];
-                quantity = double.Parse(Amountbox.Text.Split(";")[0]);
 
-                if (unit == "lbs")
+
+            try
+            {
+                if (Amountbox.Text.Contains(";"))
                 {
-                    quantity = quantity * 0.453592;
+                    unit = Amountbox.Text.Split(";")[1];
+                    quantity = double.Parse(Amountbox.Text.Split(";")[0]);
+
+                    if (unit == "lbs")
+                    {
+                        quantity = quantity * 0.453592;
+                    }
+
+                    if (unit == "oz")
+                    {
+                        quantity = quantity * 0.0283495;
+                    }
+                }
+                else
+                {
+                    quantity = double.Parse(Amountbox.Text);
+
+                    //set unit
+                    if (kgcheck.Checked)
+                    {
+                        unit = "kgs";
+                    }
+
+                    if (lbscheck.Checked)
+                    {
+                        quantity = quantity * 0.453592;
+                        unit = "lbs";
+                    }
+
+                    if (ozcheck.Checked)
+                    {
+                        quantity = quantity * 0.0283495;
+                        unit = "oz";
+                    }
                 }
 
-                if (unit == "oz")
+
+                price = double.Parse(Pricebox.Text);
+
+
+
+                //set price per kilo
+                if (perkilocheck.Checked)
                 {
-                    quantity = quantity * 0.0283495;
+                    priceperkilo = price;
+                    price = priceperkilo * quantity;
                 }
-            }
-            else
-            {
-                quantity = double.Parse(Amountbox.Text);
+                priceperkilo = price / quantity;
 
-                //set unit
-                if (kgcheck.Checked)
+
+
+                //landed pricing
+                if (Solidcheck.Checked || Amountbox.Text.Split(";")[2] == "s")
                 {
-                    unit = "kgs";
+                    priceperkilo = priceperkilo + 3;
                 }
 
-                if (lbscheck.Checked)
+                if (Liquidcheck.Checked || Amountbox.Text.Split(";")[2] == "l")
                 {
-                    quantity = quantity * 0.453592;
-                    unit = "lbs";
+                    priceperkilo = priceperkilo + 4;
                 }
 
-                if (ozcheck.Checked)
+
+
+                output = DateTime.Today.ToString("MM/dd/yyyy") + "\r\nPriced from: " + Amountbox.Text.Split(";")[0] + unit + " = $" + Math.Round(price, 2) + " ($" + Math.Round((price / quantity), 2) + "/kg) landed price: $" + Math.Round(priceperkilo, 2) + "/kg";
+                if (copycheck.Checked)
                 {
-                    quantity = quantity * 0.0283495;
-                    unit = "oz";
+                    System.Windows.Forms.Clipboard.SetText(output);
                 }
+                Outputbox.Text = output;
             }
-            price = double.Parse(Pricebox.Text);
-
-
-
-            //set price per kilo
-            if (perkilocheck.Checked)
-            {
-                priceperkilo = price;
-                price = priceperkilo * quantity;
-            }
-            priceperkilo = price / quantity;
-
-
-
-            //landed pricing
-            if (Solidcheck.Checked || Amountbox.Text.Split(";")[2] == "s")
-            {
-                priceperkilo = priceperkilo + 3;
-            }
-
-            if (Liquidcheck.Checked || Amountbox.Text.Split(";")[2] == "l")
-            {
-                priceperkilo = priceperkilo + 4;
-            }
-
-
-
-            output = DateTime.Today.ToString("MM/dd/yyyy") + "\r\nPriced from: " + Amountbox.Text.Split(";")[0] + unit + " = $" + Math.Round(price, 2) + " ($" + Math.Round((price / quantity), 2) + "/kg) landed price: $" + Math.Round(priceperkilo, 2) + "/kg";
-            if (copycheck.Checked)
-            {
-                System.Windows.Forms.Clipboard.SetText(output);
-            }
-            Outputbox.Text = output;
+            catch { Outputbox.Text = "An error has occurred, check your input formatting and try again!"; }
         }
 
 
@@ -161,68 +170,72 @@ namespace simpleTEST
             Double priceperkilo;
             String unit = "";
             String output;
-
-            //adds functionality to enter amount + ; + unit
-            if (LiquidAmountBox.Text.Contains(";"))
+            try
             {
-                unit = LiquidAmountBox.Text.Split(";")[1];
-                quantity = double.Parse(LiquidAmountBox.Text.Split(";")[0]);
-
-                if (unit == "gal")
+                //adds functionality to enter amount + ; + unit
+                if (LiquidAmountBox.Text.Contains(";"))
                 {
-                    quantity = quantity / 0.264172;
-                }
+                    unit = LiquidAmountBox.Text.Split(";")[1];
+                    quantity = double.Parse(LiquidAmountBox.Text.Split(";")[0]);
 
-                if (unit == "floz")
-                {
-                    quantity = quantity / 33.814;
+                    if (unit == "gal")
+                    {
+                        quantity = quantity / 0.264172;
+                    }
+
+                    if (unit == "floz")
+                    {
+                        quantity = quantity / 33.814;
+                    }
                 }
+                else
+                {
+                    quantity = double.Parse(LiquidAmountBox.Text);
+
+                    //set unit
+                    if (LiquidLiterCheck.Checked)
+                    {
+                        unit = "L";
+                    }
+
+                    if (LiquidGallonCheck.Checked)
+                    {
+                        quantity = quantity / 0.264172;
+                        unit = "gal";
+                    }
+
+                    if (LiquidFlozCheck.Checked)
+                    {
+                        quantity = quantity / 33.814;
+                        unit = "floz";
+                    }
+                }
+                price = double.Parse(LiquidPriceBox.Text);
+
+                quantity = quantity * double.Parse(LiquidDensityBox.Text);
+
+                //set price per kilo
+                if (perkilocheck.Checked)
+                {
+                    priceperkilo = price;
+                    price = priceperkilo * quantity;
+                }
+                priceperkilo = price / quantity;
+
+
+
+                priceperkilo = priceperkilo + 4;
+
+
+                output = DateTime.Today.ToString("MM/dd/yyyy") + "\r\nDensity: " + LiquidDensityBox.Text + "\r\nPriced from: " + LiquidAmountBox.Text.Split(";")[0] + unit + " = $" + Math.Round(price, 2) + " ($" + Math.Round((price / quantity), 2) + "/kg) landed price: $" + Math.Round(priceperkilo, 2) + "/kg";
+                if (LiquidCopyCheck.Checked)
+                {
+                    System.Windows.Forms.Clipboard.SetText(output);
+                }
+                LiquidOutputBox.Text = output;
             }
-            else
-            {
-                quantity = double.Parse(LiquidAmountBox.Text);
 
-                //set unit
-                if (LiquidLiterCheck.Checked)
-                {
-                    unit = "L";
-                }
-
-                if (LiquidGallonCheck.Checked)
-                {
-                    quantity = quantity /0.264172;
-                    unit = "gal";
-                }
-
-                if (LiquidFlozCheck.Checked)
-                {
-                    quantity = quantity / 33.814;
-                    unit = "floz";
-                }
-            }
-            price = double.Parse(LiquidPriceBox.Text);
-
-            quantity = quantity * double.Parse(LiquidDensityBox.Text);
-
-            //set price per kilo
-            if (perkilocheck.Checked)
-            {
-                priceperkilo = price;
-                price = priceperkilo * quantity;
-            }
-            priceperkilo = price / quantity;
-
-
-
-            priceperkilo = priceperkilo + 4;
-
-
-            output = DateTime.Today.ToString("MM/dd/yyyy") + "\r\nDensity: " + LiquidDensityBox.Text + "\r\nPriced from: " + LiquidAmountBox.Text.Split(";")[0] + unit + " = $" + Math.Round(price, 2) + " ($" + Math.Round((price / quantity), 2) + "/kg) landed price: $" + Math.Round(priceperkilo, 2) + "/kg";
-            if (LiquidCopyCheck.Checked)
-            {
-                System.Windows.Forms.Clipboard.SetText(output);
-            }
-            LiquidOutputBox.Text = output;
+            catch { LiquidOutputBox.Text = "An error has occurred, check your input formatting and try again!"; }
         }
 
         private void templaterun_Click(object sender, EventArgs e)
