@@ -1,4 +1,5 @@
 using System.Net.Security;
+using System.Windows.Forms.VisualStyles;
 using System.Xml;
 
 namespace simpleTEST
@@ -240,16 +241,28 @@ namespace simpleTEST
 
         private void templaterun_Click(object sender, EventArgs e)
         {
-            String[] tempStrArr;
+            string[] lines = new string[7];
+
             double[] unitsArr;
+            string[] sUnitsArr;
 
-            double[] priceArr;
-
-            double[] lpriceArr;
+            double[] neededArr;
+            string[] sNeededArr;//lol sneed
 
             double[] moqArr;
+            string[] sMoqArr;
 
+            double[] priceArr;
+            string[] sPriceArr;
 
+            double[] lpriceArr;
+            string[] sLPriceArr;
+
+            double[] purchaseArr;
+            string[] sPurchaseArr;
+
+            double[] unusedArr;
+            string[] sUnusedArr;
 
             //going to parse all these as double[], if not in list then return array len 1.
             //FUNCTION WORKFLOW: take all parameters as input, assume columnated format (i.e. order of initial input arrays corresponds-
@@ -258,27 +271,77 @@ namespace simpleTEST
             //each line string will then be separated by a line break "\r\n" and added to the output box to obtain the final formatted chart.
 
 
-           //initialize double arrays for each input box, then delimit input by "," and add to the array 
-            tempStrArr = TemplateUnitKgInput.Text.Split(',');
-            unitsArr = cDoubleArr(tempStrArr);
+            //initialize double arrays for each input box, then delimit input by "," and add to the array 
+            
+            //units row and needed row, generate needed from kg/unit field and units field
+            sUnitsArr= TemplateUnitKgInput.Text.Split(',');
+            unitsArr = cDoubleArr(sUnitsArr);
+            neededArr = new double[unitsArr.Length];   
+            sNeededArr = new string[unitsArr.Length];
+            
+            for (int i = 0; i < unitsArr.Length; i++)
+            {
+                neededArr[i] = unitsArr[i] * double.Parse(TemplateUnitKgInput.Text);
+                sNeededArr[i] = neededArr[i].ToString();
+            }
+            //____________________
 
-            tempStrArr = TemplatePricesBox.Text.Split(",");
-            priceArr = cDoubleArr(tempStrArr);
 
-            tempStrArr = TemplatePricesBox.Text.Split(",");
-            lpriceArr =cDoubleArr(tempStrArr);
 
-            tempStrArr = TemplatePricesBox.Text.Split(",");
-            moqArr = cDoubleArr(tempStrArr);
 
-            //So that all these rows can be of an arbitrary length, use for loops to initialize each row into its respective line before sending it to paddingfunc
+            //Price per kilo
+            sPriceArr =  TemplatePricesBox.Text.Split(",");
+            priceArr = cDoubleArr(sPriceArr);
+
+            //landed price per kilo
+            sLPriceArr = TemplatePricesBox.Text.Split(",");
+            lpriceArr =cDoubleArr(sLPriceArr);
+
+            //list of MOQ's
+            sMoqArr = TemplatePricesBox.Text.Split(",");
+            moqArr = cDoubleArr(sMoqArr);
+
+
+            //initialize the "purchase" row, figure out how much to order per each MOQ to fit needed
+            purchaseArr = new double[moqArr.Length];
+            sPurchaseArr = new string[moqArr.Length];
+
+            for (int i = 0; i < purchaseArr.Length; i++)
+            {
+                while (purchaseArr[i] < neededArr[i])
+                {
+                    purchaseArr[i] = purchaseArr[i] + moqArr[i];//add the MOQ to the purchase as long as it is less than needed. |||||||||||||||||| this is weird, needed and moq might not line up like this
+                }
+            }
+
+
+
+
+            //use an initializing function to set the first lines in the array
+            lines[0] = initiaLine(sUnitsArr, "", "");
+            lines[1] = initiaLine(sNeededArr, "", "kg");
+            lines[2] = initiaLine(sMoqArr, "", "kg");
+            lines[3] = initiaLine(sPriceArr, "$", "/kg");
+            lines[4] = initiaLine(sLPriceArr, "$", "/kg");
+             
             
 
 
 
 
-
         }
+
+
+        private static string initiaLine(string[] arr, string prewrap, string postwrap)
+        {
+            string output = "";
+            for (int i = 0; i < arr.Length - 1; i++)
+            {
+                output = output + prewrap + arr[i] +postwrap + " ";
+            }
+            return output;
+        }
+
         private static double[] cDoubleArr(string[] arr)
         {
             double[] output;
