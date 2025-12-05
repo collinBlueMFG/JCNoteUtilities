@@ -343,10 +343,20 @@ namespace simpleTEST
             }
 
             lines[6] = initiaLine(sUnusedArr, "", "kg");
-            TemplateOutputBox.Text = lines[0] + "\r\n" + lines[1] + "\r\n" + lines[2] + "\r\n" + lines[3] + "\r\n" + lines[4] + "\r\n" + lines[5] + "\r\n" + lines[6];
-            
-            
 
+            lines[0] = PaddingFunc("          ", lines[0], 15);
+            lines[1] = PaddingFunc("NEEDED:", lines[1], 15);
+            lines[2] = PaddingFunc("MOQ:", lines[2], 15);
+            lines[3] = PaddingFunc("PRICED:", lines[3], 15);
+            lines[4] = PaddingFunc("LANDED:", lines[4], 15);
+            lines[5] = PaddingFunc("BOUGHT:", lines[5], 15);
+            lines[6] = PaddingFunc("UNUSED:", lines[6], 15);
+
+            TemplateOutputBox.Text = lines[0] + "\r\n" + lines[1] + "\r\n" + lines[2] + "\r\n" + lines[3] + "\r\n" + lines[4] + "\r\n" + lines[5] + "\r\n" + lines[6];
+            if (TemplateCopyCheck.Checked)
+            {
+                    System.Windows.Forms.Clipboard.SetText(TemplateOutputBox.Text);
+            } 
         }
 
 
@@ -376,9 +386,13 @@ namespace simpleTEST
 
         private static string PaddingFunc(string rowName, string line, int padValue) //This function takes an input string of 1 row from templaterun_click (3 values separated by spaces) and pads the spaces until it reaches a maximum character limit
         {
-            string output = "";
+            string output = rowName;
             string[] lineArr = line.Split(" ");
-           
+
+            while (output.Length < padValue)
+            {
+                output = output + " ";
+            }
             
             for(int j = 0; j < lineArr.Length-1; j++)
             {
