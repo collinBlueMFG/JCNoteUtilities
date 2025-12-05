@@ -274,7 +274,7 @@ namespace simpleTEST
             //initialize double arrays for each input box, then delimit input by "," and add to the array 
             
             //units row and needed row, generate needed from kg/unit field and units field
-            sUnitsArr= TemplateUnitKgInput.Text.Split(',');
+            sUnitsArr= NumberOfUnitsBox.Text.Split(',');
             unitsArr = cDoubleArr(sUnitsArr);
             neededArr = new double[unitsArr.Length];   
             sNeededArr = new string[unitsArr.Length];
@@ -290,52 +290,72 @@ namespace simpleTEST
 
 
             //Price per kilo
-            sPriceArr =  TemplatePricesBox.Text.Split(",");
+            sPriceArr =  TemplatePricesBox.Text.Split(","); //["x","y","z"]
             priceArr = cDoubleArr(sPriceArr);
 
             //landed price per kilo
-            sLPriceArr = TemplatePricesBox.Text.Split(",");
+            sLPriceArr = TemplateLandingBox.Text.Split(",");//["x","y","z"]
+
             lpriceArr =cDoubleArr(sLPriceArr);
 
             //list of MOQ's
-            sMoqArr = TemplatePricesBox.Text.Split(",");
+            sMoqArr = TemplateMoqInput.Text.Split(",");//["xkg", "ykg", "zkg"]
             moqArr = cDoubleArr(sMoqArr);
 
 
             //initialize the "purchase" row, figure out how much to order per each MOQ to fit needed
             purchaseArr = new double[moqArr.Length];
-            sPurchaseArr = new string[moqArr.Length];
+            sPurchaseArr = new string[moqArr.Length];//["(g*x)kg, (g*y)kg, (g*z)kg"]
 
             for (int i = 0; i < purchaseArr.Length; i++)
             {
                 while (purchaseArr[i] < neededArr[i])
                 {
-                    purchaseArr[i] = purchaseArr[i] + moqArr[i];//add the MOQ to the purchase as long as it is less than needed. |||||||||||||||||| this is weird, needed and moq might not line up like this
+                    purchaseArr[i] = Math.Round(purchaseArr[i] + moqArr[i],2);//add the MOQ to the purchase as long as it is less than needed. |||||||||||||||||| this is weird, needed and moq might not line up like this
                 }
+                sPurchaseArr[i] = purchaseArr[i].ToString();
             }
 
+            //initialize the "leftover" row, subtract needed from purchase and multiply by price at that moq
+            unusedArr = new double[neededArr.Length];
+            sUnusedArr = new string[neededArr.Length];
 
+            for(int i = 0; i< unusedArr.Length; i++)
+            {
+                unusedArr[i] =Math.Round(purchaseArr[i] - neededArr[i],2);
+                sUnusedArr[i] = unusedArr[i].ToString();
+            }
+           
+            
 
 
             //use an initializing function to set the first lines in the array
-            lines[0] = initiaLine(sUnitsArr, "", "");
+            lines[0] = initiaLine(sUnitsArr, "", ""); 
             lines[1] = initiaLine(sNeededArr, "", "kg");
             lines[2] = initiaLine(sMoqArr, "", "kg");
             lines[3] = initiaLine(sPriceArr, "$", "/kg");
             lines[4] = initiaLine(sLPriceArr, "$", "/kg");
-             
+            lines[5] = initiaLine(sPurchaseArr, "", "kg");
+
+            for (int i = 0; i < sUnusedArr.Length; i++) 
+            {
+                sUnusedArr[i] = sUnusedArr[i] + "($" + (Math.Round(unusedArr[i] * lpriceArr[i],2)).ToString() + ")";
+            }
+
+            lines[6] = initiaLine(sUnusedArr, "", "kg");
+            TemplateOutputBox.Text = lines[0] + "\r\n" + lines[1] + "\r\n" + lines[2] + "\r\n" + lines[3] + "\r\n" + lines[4] + "\r\n" + lines[5] + "\r\n" + lines[6];
             
-
-
-
+            
 
         }
 
 
+        //FUNCTION BLOCK
+
         private static string initiaLine(string[] arr, string prewrap, string postwrap)
         {
             string output = "";
-            for (int i = 0; i < arr.Length - 1; i++)
+            for (int i = 0; i < arr.Length; i++)
             {
                 output = output + prewrap + arr[i] +postwrap + " ";
             }

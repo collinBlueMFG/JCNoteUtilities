@@ -46,6 +46,22 @@
             copycheck = new CheckBox();
             tabControl1 = new TabControl();
             tabPage1 = new TabPage();
+            label8 = new Label();
+            tabPage3 = new TabPage();
+            LiquidOutputBox = new TextBox();
+            LiquidCopyCheck = new CheckBox();
+            label13 = new Label();
+            LiquidRun = new Button();
+            LiquidDensityBox = new TextBox();
+            label12 = new Label();
+            label11 = new Label();
+            LiquidLiterCheck = new CheckBox();
+            LiquidFlozCheck = new CheckBox();
+            LiquidGallonCheck = new CheckBox();
+            LiquidPriceBox = new TextBox();
+            label10 = new Label();
+            LiquidAmountBox = new TextBox();
+            label9 = new Label();
             tabPage2 = new TabPage();
             NumberOfUnitsBox = new TextBox();
             label7 = new Label();
@@ -61,26 +77,10 @@
             outputlabel = new Label();
             TemplateUnitKgInput = new TextBox();
             kgPerUnit = new Label();
-            label8 = new Label();
-            tabPage3 = new TabPage();
-            label9 = new Label();
-            LiquidAmountBox = new TextBox();
-            LiquidPriceBox = new TextBox();
-            label10 = new Label();
-            label11 = new Label();
-            LiquidLiterCheck = new CheckBox();
-            LiquidFlozCheck = new CheckBox();
-            LiquidGallonCheck = new CheckBox();
-            LiquidDensityBox = new TextBox();
-            label12 = new Label();
-            LiquidRun = new Button();
-            LiquidOutputBox = new TextBox();
-            LiquidCopyCheck = new CheckBox();
-            label13 = new Label();
             tabControl1.SuspendLayout();
             tabPage1.SuspendLayout();
-            tabPage2.SuspendLayout();
             tabPage3.SuspendLayout();
+            tabPage2.SuspendLayout();
             SuspendLayout();
             // 
             // label1
@@ -275,6 +275,163 @@
             tabPage1.Text = "JC Note Generator";
             tabPage1.UseVisualStyleBackColor = true;
             // 
+            // label8
+            // 
+            label8.AutoSize = true;
+            label8.Location = new Point(16, 128);
+            label8.Name = "label8";
+            label8.Size = new Size(0, 15);
+            label8.TabIndex = 19;
+            // 
+            // tabPage3
+            // 
+            tabPage3.Controls.Add(LiquidOutputBox);
+            tabPage3.Controls.Add(LiquidCopyCheck);
+            tabPage3.Controls.Add(label13);
+            tabPage3.Controls.Add(LiquidRun);
+            tabPage3.Controls.Add(LiquidDensityBox);
+            tabPage3.Controls.Add(label12);
+            tabPage3.Controls.Add(label11);
+            tabPage3.Controls.Add(LiquidLiterCheck);
+            tabPage3.Controls.Add(LiquidFlozCheck);
+            tabPage3.Controls.Add(LiquidGallonCheck);
+            tabPage3.Controls.Add(LiquidPriceBox);
+            tabPage3.Controls.Add(label10);
+            tabPage3.Controls.Add(LiquidAmountBox);
+            tabPage3.Controls.Add(label9);
+            tabPage3.Location = new Point(4, 24);
+            tabPage3.Name = "tabPage3";
+            tabPage3.Size = new Size(416, 352);
+            tabPage3.TabIndex = 2;
+            tabPage3.Text = "JC Note Generator (liquids)";
+            tabPage3.UseVisualStyleBackColor = true;
+            // 
+            // LiquidOutputBox
+            // 
+            LiquidOutputBox.Location = new Point(19, 172);
+            LiquidOutputBox.Multiline = true;
+            LiquidOutputBox.Name = "LiquidOutputBox";
+            LiquidOutputBox.ScrollBars = ScrollBars.Both;
+            LiquidOutputBox.Size = new Size(369, 50);
+            LiquidOutputBox.TabIndex = 26;
+            // 
+            // LiquidCopyCheck
+            // 
+            LiquidCopyCheck.AutoSize = true;
+            LiquidCopyCheck.Font = new Font("Segoe UI", 8F);
+            LiquidCopyCheck.Location = new Point(67, 149);
+            LiquidCopyCheck.Name = "LiquidCopyCheck";
+            LiquidCopyCheck.Size = new Size(210, 17);
+            LiquidCopyCheck.TabIndex = 27;
+            LiquidCopyCheck.Text = "Copy output to clipboard when run";
+            LiquidCopyCheck.UseVisualStyleBackColor = true;
+            // 
+            // label13
+            // 
+            label13.AutoSize = true;
+            label13.Location = new Point(16, 147);
+            label13.Name = "label13";
+            label13.Size = new Size(45, 15);
+            label13.TabIndex = 25;
+            label13.Text = "Output";
+            // 
+            // LiquidRun
+            // 
+            LiquidRun.Location = new Point(270, 20);
+            LiquidRun.Name = "LiquidRun";
+            LiquidRun.Size = new Size(89, 43);
+            LiquidRun.TabIndex = 24;
+            LiquidRun.Text = "Run";
+            LiquidRun.UseVisualStyleBackColor = true;
+            LiquidRun.Click += LiquidRun_Click;
+            // 
+            // LiquidDensityBox
+            // 
+            LiquidDensityBox.Location = new Point(16, 121);
+            LiquidDensityBox.Name = "LiquidDensityBox";
+            LiquidDensityBox.Size = new Size(95, 23);
+            LiquidDensityBox.TabIndex = 23;
+            // 
+            // label12
+            // 
+            label12.AutoSize = true;
+            label12.Location = new Point(16, 103);
+            label12.Name = "label12";
+            label12.Size = new Size(86, 15);
+            label12.TabIndex = 22;
+            label12.Text = "Density (g/mL)";
+            // 
+            // label11
+            // 
+            label11.AutoSize = true;
+            label11.Location = new Point(129, 15);
+            label11.Name = "label11";
+            label11.Size = new Size(32, 15);
+            label11.TabIndex = 18;
+            label11.Text = "Unit:";
+            // 
+            // LiquidLiterCheck
+            // 
+            LiquidLiterCheck.AutoSize = true;
+            LiquidLiterCheck.Location = new Point(129, 33);
+            LiquidLiterCheck.Name = "LiquidLiterCheck";
+            LiquidLiterCheck.Size = new Size(49, 19);
+            LiquidLiterCheck.TabIndex = 19;
+            LiquidLiterCheck.Text = "Liter";
+            LiquidLiterCheck.UseVisualStyleBackColor = true;
+            // 
+            // LiquidFlozCheck
+            // 
+            LiquidFlozCheck.AutoSize = true;
+            LiquidFlozCheck.Location = new Point(226, 33);
+            LiquidFlozCheck.Name = "LiquidFlozCheck";
+            LiquidFlozCheck.Size = new Size(45, 19);
+            LiquidFlozCheck.TabIndex = 21;
+            LiquidFlozCheck.Text = "floz";
+            LiquidFlozCheck.UseVisualStyleBackColor = true;
+            // 
+            // LiquidGallonCheck
+            // 
+            LiquidGallonCheck.AutoSize = true;
+            LiquidGallonCheck.Location = new Point(179, 33);
+            LiquidGallonCheck.Name = "LiquidGallonCheck";
+            LiquidGallonCheck.Size = new Size(42, 19);
+            LiquidGallonCheck.TabIndex = 20;
+            LiquidGallonCheck.Text = "gal";
+            LiquidGallonCheck.UseVisualStyleBackColor = true;
+            // 
+            // LiquidPriceBox
+            // 
+            LiquidPriceBox.Location = new Point(16, 77);
+            LiquidPriceBox.Name = "LiquidPriceBox";
+            LiquidPriceBox.Size = new Size(95, 23);
+            LiquidPriceBox.TabIndex = 3;
+            // 
+            // label10
+            // 
+            label10.AutoSize = true;
+            label10.Location = new Point(16, 59);
+            label10.Name = "label10";
+            label10.Size = new Size(33, 15);
+            label10.TabIndex = 2;
+            label10.Text = "Price";
+            // 
+            // LiquidAmountBox
+            // 
+            LiquidAmountBox.Location = new Point(16, 33);
+            LiquidAmountBox.Name = "LiquidAmountBox";
+            LiquidAmountBox.Size = new Size(95, 23);
+            LiquidAmountBox.TabIndex = 1;
+            // 
+            // label9
+            // 
+            label9.AutoSize = true;
+            label9.Location = new Point(16, 15);
+            label9.Name = "label9";
+            label9.Size = new Size(51, 15);
+            label9.TabIndex = 0;
+            label9.Text = "Amount";
+            // 
             // tabPage2
             // 
             tabPage2.AutoScroll = true;
@@ -302,7 +459,7 @@
             // 
             // NumberOfUnitsBox
             // 
-            NumberOfUnitsBox.Location = new Point(18, 94);
+            NumberOfUnitsBox.Location = new Point(18, 50);
             NumberOfUnitsBox.Name = "NumberOfUnitsBox";
             NumberOfUnitsBox.Size = new Size(246, 23);
             NumberOfUnitsBox.TabIndex = 21;
@@ -310,7 +467,7 @@
             // label7
             // 
             label7.AutoSize = true;
-            label7.Location = new Point(7, 76);
+            label7.Location = new Point(7, 32);
             label7.Name = "label7";
             label7.Size = new Size(232, 15);
             label7.TabIndex = 20;
@@ -371,7 +528,7 @@
             // 
             // TemplatePricesBox
             // 
-            TemplatePricesBox.Location = new Point(18, 50);
+            TemplatePricesBox.Location = new Point(18, 94);
             TemplatePricesBox.Name = "TemplatePricesBox";
             TemplatePricesBox.Size = new Size(246, 23);
             TemplatePricesBox.TabIndex = 3;
@@ -386,7 +543,7 @@
             // Prices
             // 
             Prices.AutoSize = true;
-            Prices.Location = new Point(6, 32);
+            Prices.Location = new Point(6, 76);
             Prices.Name = "Prices";
             Prices.Size = new Size(259, 15);
             Prices.TabIndex = 2;
@@ -417,163 +574,6 @@
             kgPerUnit.TabIndex = 0;
             kgPerUnit.Text = "Enter kg/unit";
             // 
-            // label8
-            // 
-            label8.AutoSize = true;
-            label8.Location = new Point(16, 128);
-            label8.Name = "label8";
-            label8.Size = new Size(0, 15);
-            label8.TabIndex = 19;
-            // 
-            // tabPage3
-            // 
-            tabPage3.Controls.Add(LiquidOutputBox);
-            tabPage3.Controls.Add(LiquidCopyCheck);
-            tabPage3.Controls.Add(label13);
-            tabPage3.Controls.Add(LiquidRun);
-            tabPage3.Controls.Add(LiquidDensityBox);
-            tabPage3.Controls.Add(label12);
-            tabPage3.Controls.Add(label11);
-            tabPage3.Controls.Add(LiquidLiterCheck);
-            tabPage3.Controls.Add(LiquidFlozCheck);
-            tabPage3.Controls.Add(LiquidGallonCheck);
-            tabPage3.Controls.Add(LiquidPriceBox);
-            tabPage3.Controls.Add(label10);
-            tabPage3.Controls.Add(LiquidAmountBox);
-            tabPage3.Controls.Add(label9);
-            tabPage3.Location = new Point(4, 24);
-            tabPage3.Name = "tabPage3";
-            tabPage3.Size = new Size(416, 352);
-            tabPage3.TabIndex = 2;
-            tabPage3.Text = "JC Note Generator (liquids)";
-            tabPage3.UseVisualStyleBackColor = true;
-            // 
-            // label9
-            // 
-            label9.AutoSize = true;
-            label9.Location = new Point(16, 15);
-            label9.Name = "label9";
-            label9.Size = new Size(51, 15);
-            label9.TabIndex = 0;
-            label9.Text = "Amount";
-            // 
-            // LiquidAmountBox
-            // 
-            LiquidAmountBox.Location = new Point(16, 33);
-            LiquidAmountBox.Name = "LiquidAmountBox";
-            LiquidAmountBox.Size = new Size(95, 23);
-            LiquidAmountBox.TabIndex = 1;
-            // 
-            // LiquidPriceBox
-            // 
-            LiquidPriceBox.Location = new Point(16, 77);
-            LiquidPriceBox.Name = "LiquidPriceBox";
-            LiquidPriceBox.Size = new Size(95, 23);
-            LiquidPriceBox.TabIndex = 3;
-            // 
-            // label10
-            // 
-            label10.AutoSize = true;
-            label10.Location = new Point(16, 59);
-            label10.Name = "label10";
-            label10.Size = new Size(33, 15);
-            label10.TabIndex = 2;
-            label10.Text = "Price";
-            // 
-            // label11
-            // 
-            label11.AutoSize = true;
-            label11.Location = new Point(129, 15);
-            label11.Name = "label11";
-            label11.Size = new Size(32, 15);
-            label11.TabIndex = 18;
-            label11.Text = "Unit:";
-            // 
-            // LiquidLiterCheck
-            // 
-            LiquidLiterCheck.AutoSize = true;
-            LiquidLiterCheck.Location = new Point(129, 33);
-            LiquidLiterCheck.Name = "LiquidLiterCheck";
-            LiquidLiterCheck.Size = new Size(49, 19);
-            LiquidLiterCheck.TabIndex = 19;
-            LiquidLiterCheck.Text = "Liter";
-            LiquidLiterCheck.UseVisualStyleBackColor = true;
-            // 
-            // LiquidFlozCheck
-            // 
-            LiquidFlozCheck.AutoSize = true;
-            LiquidFlozCheck.Location = new Point(226, 33);
-            LiquidFlozCheck.Name = "LiquidFlozCheck";
-            LiquidFlozCheck.Size = new Size(45, 19);
-            LiquidFlozCheck.TabIndex = 21;
-            LiquidFlozCheck.Text = "floz";
-            LiquidFlozCheck.UseVisualStyleBackColor = true;
-            // 
-            // LiquidGallonCheck
-            // 
-            LiquidGallonCheck.AutoSize = true;
-            LiquidGallonCheck.Location = new Point(179, 33);
-            LiquidGallonCheck.Name = "LiquidGallonCheck";
-            LiquidGallonCheck.Size = new Size(42, 19);
-            LiquidGallonCheck.TabIndex = 20;
-            LiquidGallonCheck.Text = "gal";
-            LiquidGallonCheck.UseVisualStyleBackColor = true;
-            // 
-            // LiquidDensityBox
-            // 
-            LiquidDensityBox.Location = new Point(16, 121);
-            LiquidDensityBox.Name = "LiquidDensityBox";
-            LiquidDensityBox.Size = new Size(95, 23);
-            LiquidDensityBox.TabIndex = 23;
-            // 
-            // label12
-            // 
-            label12.AutoSize = true;
-            label12.Location = new Point(16, 103);
-            label12.Name = "label12";
-            label12.Size = new Size(86, 15);
-            label12.TabIndex = 22;
-            label12.Text = "Density (g/mL)";
-            // 
-            // LiquidRun
-            // 
-            LiquidRun.Location = new Point(270, 20);
-            LiquidRun.Name = "LiquidRun";
-            LiquidRun.Size = new Size(89, 43);
-            LiquidRun.TabIndex = 24;
-            LiquidRun.Text = "Run";
-            LiquidRun.UseVisualStyleBackColor = true;
-            LiquidRun.Click += LiquidRun_Click;
-            // 
-            // LiquidOutputBox
-            // 
-            LiquidOutputBox.Location = new Point(19, 172);
-            LiquidOutputBox.Multiline = true;
-            LiquidOutputBox.Name = "LiquidOutputBox";
-            LiquidOutputBox.ScrollBars = ScrollBars.Both;
-            LiquidOutputBox.Size = new Size(369, 50);
-            LiquidOutputBox.TabIndex = 26;
-            // 
-            // LiquidCopyCheck
-            // 
-            LiquidCopyCheck.AutoSize = true;
-            LiquidCopyCheck.Font = new Font("Segoe UI", 8F);
-            LiquidCopyCheck.Location = new Point(67, 149);
-            LiquidCopyCheck.Name = "LiquidCopyCheck";
-            LiquidCopyCheck.Size = new Size(210, 17);
-            LiquidCopyCheck.TabIndex = 27;
-            LiquidCopyCheck.Text = "Copy output to clipboard when run";
-            LiquidCopyCheck.UseVisualStyleBackColor = true;
-            // 
-            // label13
-            // 
-            label13.AutoSize = true;
-            label13.Location = new Point(16, 147);
-            label13.Name = "label13";
-            label13.Size = new Size(45, 15);
-            label13.TabIndex = 25;
-            label13.Text = "Output";
-            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -586,10 +586,10 @@
             tabControl1.ResumeLayout(false);
             tabPage1.ResumeLayout(false);
             tabPage1.PerformLayout();
-            tabPage2.ResumeLayout(false);
-            tabPage2.PerformLayout();
             tabPage3.ResumeLayout(false);
             tabPage3.PerformLayout();
+            tabPage2.ResumeLayout(false);
+            tabPage2.PerformLayout();
             ResumeLayout(false);
         }
 
