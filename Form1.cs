@@ -241,122 +241,129 @@ namespace simpleTEST
 
         private void templaterun_Click(object sender, EventArgs e)
         {
-            string[] lines = new string[7];
-
-            double[] unitsArr;
-            string[] sUnitsArr;
-
-            double[] neededArr;
-            string[] sNeededArr;//lol sneed
-
-            double[] moqArr;
-            string[] sMoqArr;
-
-            double[] priceArr;
-            string[] sPriceArr;
-
-            double[] lpriceArr;
-            string[] sLPriceArr;
-
-            double[] purchaseArr;
-            string[] sPurchaseArr;
-
-            double[] unusedArr;
-            string[] sUnusedArr;
-
-            //going to parse all these as double[], if not in list then return array len 1.
-            //FUNCTION WORKFLOW: take all parameters as input, assume columnated format (i.e. order of initial input arrays corresponds-
-            //to their order in columns and assumes same number of elements unless length is one. these values will then be added into the normal string format and added to a "line" string-
-            //the content of which will consist of each column's contents on that row, followed by a number of padding characters (" ") determined by a function up to an arbitrary max character per line limit.
-            //each line string will then be separated by a line break "\r\n" and added to the output box to obtain the final formatted chart.
-
-
-            //initialize double arrays for each input box, then delimit input by "," and add to the array 
-            
-            //units row and needed row, generate needed from kg/unit field and units field
-            sUnitsArr= NumberOfUnitsBox.Text.Split(',');
-            unitsArr = cDoubleArr(sUnitsArr);
-            neededArr = new double[unitsArr.Length];   
-            sNeededArr = new string[unitsArr.Length];
-            
-            for (int i = 0; i < unitsArr.Length; i++)
+            try
             {
-                neededArr[i] = unitsArr[i] * double.Parse(TemplateUnitKgInput.Text);
-                sNeededArr[i] = neededArr[i].ToString();
-            }
-            //____________________
+                string[] lines = new string[7];
+
+                double[] unitsArr;
+                string[] sUnitsArr;
+
+                double[] neededArr;
+                string[] sNeededArr;//lol sneed
+
+                double[] moqArr;
+                string[] sMoqArr;
+
+                double[] priceArr;
+                string[] sPriceArr;
+
+                double[] lpriceArr;
+                string[] sLPriceArr;
+
+                double[] purchaseArr;
+                string[] sPurchaseArr;
+
+                double[] unusedArr;
+                string[] sUnusedArr;
+
+                //going to parse all these as double[], if not in list then return array len 1.
+                //FUNCTION WORKFLOW: take all parameters as input, assume columnated format (i.e. order of initial input arrays corresponds-
+                //to their order in columns and assumes same number of elements unless length is one. these values will then be added into the normal string format and added to a "line" string-
+                //the content of which will consist of each column's contents on that row, followed by a number of padding characters (" ") determined by a function up to an arbitrary max character per line limit.
+                //each line string will then be separated by a line break "\r\n" and added to the output box to obtain the final formatted chart.
 
 
+                //initialize double arrays for each input box, then delimit input by "," and add to the array 
 
+                //units row and needed row, generate needed from kg/unit field and units field
+                sUnitsArr = NumberOfUnitsBox.Text.Split(',');
+                unitsArr = cDoubleArr(sUnitsArr);
+                neededArr = new double[unitsArr.Length];
+                sNeededArr = new string[unitsArr.Length];
 
-            //Price per kilo
-            sPriceArr =  TemplatePricesBox.Text.Split(","); //["x","y","z"]
-            priceArr = cDoubleArr(sPriceArr);
-
-            //landed price per kilo
-            sLPriceArr = TemplateLandingBox.Text.Split(",");//["x","y","z"]
-
-            lpriceArr =cDoubleArr(sLPriceArr);
-
-            //list of MOQ's
-            sMoqArr = TemplateMoqInput.Text.Split(",");//["xkg", "ykg", "zkg"]
-            moqArr = cDoubleArr(sMoqArr);
-
-
-            //initialize the "purchase" row, figure out how much to order per each MOQ to fit needed
-            purchaseArr = new double[moqArr.Length];
-            sPurchaseArr = new string[moqArr.Length];//["(g*x)kg, (g*y)kg, (g*z)kg"]
-
-            for (int i = 0; i < purchaseArr.Length; i++)
-            {
-                while (purchaseArr[i] < neededArr[i])
+                for (int i = 0; i < unitsArr.Length; i++)
                 {
-                    purchaseArr[i] = Math.Round(purchaseArr[i] + moqArr[i],2);//add the MOQ to the purchase as long as it is less than needed. |||||||||||||||||| this is weird, needed and moq might not line up like this
+                    neededArr[i] = unitsArr[i] * double.Parse(TemplateUnitKgInput.Text);
+                    sNeededArr[i] = neededArr[i].ToString();
                 }
-                sPurchaseArr[i] = purchaseArr[i].ToString();
-            }
-
-            //initialize the "leftover" row, subtract needed from purchase and multiply by price at that moq
-            unusedArr = new double[neededArr.Length];
-            sUnusedArr = new string[neededArr.Length];
-
-            for(int i = 0; i< unusedArr.Length; i++)
-            {
-                unusedArr[i] =Math.Round(purchaseArr[i] - neededArr[i],2);
-                sUnusedArr[i] = unusedArr[i].ToString();
-            }
-           
-            
+                //____________________
 
 
-            //use an initializing function to set the first lines in the array
-            lines[0] = initiaLine(sUnitsArr, "", ""); 
-            lines[1] = initiaLine(sNeededArr, "", "kg");
-            lines[2] = initiaLine(sMoqArr, "", "kg");
-            lines[3] = initiaLine(sPriceArr, "$", "/kg");
-            lines[4] = initiaLine(sLPriceArr, "$", "/kg");
-            lines[5] = initiaLine(sPurchaseArr, "", "kg");
 
-            for (int i = 0; i < sUnusedArr.Length; i++) 
-            {
-                sUnusedArr[i] = sUnusedArr[i] + "($" + (Math.Round(unusedArr[i] * lpriceArr[i],2)).ToString() + ")";
-            }
 
-            lines[6] = initiaLine(sUnusedArr, "", "kg");
+                //Price per kilo
+                sPriceArr = TemplatePricesBox.Text.Split(","); //["x","y","z"]
+                priceArr = cDoubleArr(sPriceArr);
 
-            lines[0] = PaddingFunc("          ", lines[0], 15);
-            lines[1] = PaddingFunc("NEEDED:", lines[1], 15);
-            lines[2] = PaddingFunc("MOQ:", lines[2], 15);
-            lines[3] = PaddingFunc("PRICED:", lines[3], 15);
-            lines[4] = PaddingFunc("LANDED:", lines[4], 15);
-            lines[5] = PaddingFunc("BOUGHT:", lines[5], 15);
-            lines[6] = PaddingFunc("UNUSED:", lines[6], 15);
+                //landed price per kilo
+                sLPriceArr = TemplateLandingBox.Text.Split(",");//["x","y","z"]
 
-            TemplateOutputBox.Text = lines[0] + "\r\n" + lines[1] + "\r\n" + lines[2] + "\r\n" + lines[3] + "\r\n" + lines[4] + "\r\n" + lines[5] + "\r\n" + lines[6];
-            if (TemplateCopyCheck.Checked)
-            {
+                lpriceArr = cDoubleArr(sLPriceArr);
+
+                //list of MOQ's
+                sMoqArr = TemplateMoqInput.Text.Split(",");//["xkg", "ykg", "zkg"]
+                moqArr = cDoubleArr(sMoqArr);
+
+
+                //initialize the "purchase" row, figure out how much to order per each MOQ to fit needed
+                purchaseArr = new double[moqArr.Length];
+                sPurchaseArr = new string[moqArr.Length];//["(g*x)kg, (g*y)kg, (g*z)kg"]
+
+                for (int i = 0; i < purchaseArr.Length; i++)
+                {
+                    while (purchaseArr[i] < neededArr[i])
+                    {
+                        purchaseArr[i] = Math.Round(purchaseArr[i] + moqArr[i], 2);//add the MOQ to the purchase as long as it is less than needed. |||||||||||||||||| this is weird, needed and moq might not line up like this
+                    }
+                    sPurchaseArr[i] = purchaseArr[i].ToString();
+                }
+
+                //initialize the "leftover" row, subtract needed from purchase and multiply by price at that moq
+                unusedArr = new double[neededArr.Length];
+                sUnusedArr = new string[neededArr.Length];
+
+                for (int i = 0; i < unusedArr.Length; i++)
+                {
+                    unusedArr[i] = Math.Round(purchaseArr[i] - neededArr[i], 2);
+                    sUnusedArr[i] = unusedArr[i].ToString();
+                }
+
+
+
+
+                //use an initializing function to set the first lines in the array
+                lines[0] = initiaLine(sUnitsArr, "", "");
+                lines[1] = initiaLine(sNeededArr, "", "kg");
+                lines[2] = initiaLine(sMoqArr, "", "kg");
+                lines[3] = initiaLine(sPriceArr, "$", "/kg");
+                lines[4] = initiaLine(sLPriceArr, "$", "/kg");
+                lines[5] = initiaLine(sPurchaseArr, "", "kg");
+
+                for (int i = 0; i < sUnusedArr.Length; i++)
+                {
+                    sUnusedArr[i] = sUnusedArr[i] + "($" + (Math.Round(unusedArr[i] * lpriceArr[i], 2)).ToString() + ")";
+                }
+
+                lines[6] = initiaLine(sUnusedArr, "", "kg");
+
+                lines[0] = PaddingFunc("          ", lines[0], 15);
+                lines[1] = PaddingFunc("NEEDED:", lines[1], 15);
+                lines[2] = PaddingFunc("MOQ:", lines[2], 15);
+                lines[3] = PaddingFunc("PRICED:", lines[3], 15);
+                lines[4] = PaddingFunc("LANDED:", lines[4], 15);
+                lines[5] = PaddingFunc("BOUGHT:", lines[5], 15);
+                lines[6] = PaddingFunc("UNUSED:", lines[6], 15);
+
+                TemplateOutputBox.Text = lines[0] + "\r\n" + lines[1] + "\r\n" + lines[2] + "\r\n" + lines[3] + "\r\n" + lines[4] + "\r\n" + lines[5] + "\r\n" + lines[6];
+                if (TemplateCopyCheck.Checked)
+                {
                     System.Windows.Forms.Clipboard.SetText(TemplateOutputBox.Text);
-            } 
+                }
+            }
+            catch 
+            { 
+                TemplateOutputBox.Text = "An error occurred! Check your input formatting and try again."; 
+            }
         }
 
 
