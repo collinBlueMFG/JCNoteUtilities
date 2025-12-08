@@ -341,12 +341,12 @@ namespace simpleTEST
 
                 for (int i = 0; i < sUnusedArr.Length; i++)
                 {
-                    sUnusedArr[i] = sUnusedArr[i] + "($" + (Math.Round(unusedArr[i] * lpriceArr[i], 2)).ToString() + ")";
+                    sUnusedArr[i] = sUnusedArr[i] + "($" + (Math.Round(unusedArr[i] * lpriceArr[i], 2)).ToString() + ")";//this needs separate initialization because it includes 2 values
                 }
 
                 lines[6] = initiaLine(sUnusedArr, "", "kg");
 
-                lines[0] = PaddingFunc("          ", lines[0], 15);
+                lines[0] = PaddingFunc("          ", lines[0], 15);//add space padding and headers to all lines
                 lines[1] = PaddingFunc("NEEDED:", lines[1], 15);
                 lines[2] = PaddingFunc("MOQ:", lines[2], 15);
                 lines[3] = PaddingFunc("PRICED:", lines[3], 15);
@@ -354,13 +354,13 @@ namespace simpleTEST
                 lines[5] = PaddingFunc("BOUGHT:", lines[5], 15);
                 lines[6] = PaddingFunc("UNUSED:", lines[6], 15);
 
-                TemplateOutputBox.Text = lines[0] + "\r\n" + lines[1] + "\r\n" + lines[2] + "\r\n" + lines[3] + "\r\n" + lines[4] + "\r\n" + lines[5] + "\r\n" + lines[6];
+                TemplateOutputBox.Text = lines[0] + "\r\n" + lines[1] + "\r\n" + lines[2] + "\r\n" + lines[3] + "\r\n" + lines[4] + "\r\n" + lines[5] + "\r\n" + lines[6];//output, this would be better handled by a generic "output" variable tho
                 if (TemplateCopyCheck.Checked)
                 {
                     System.Windows.Forms.Clipboard.SetText(TemplateOutputBox.Text);
                 }
             }
-            catch 
+            catch //bad error handling but it stops the program from crashing
             { 
                 TemplateOutputBox.Text = "An error occurred! Check your input formatting and try again."; 
             }
@@ -369,7 +369,7 @@ namespace simpleTEST
 
         //FUNCTION BLOCK
 
-        private static string initiaLine(string[] arr, string prewrap, string postwrap)
+        private static string initiaLine(string[] arr, string prewrap, string postwrap)//this initializes the array elements and adds pre/post strings to each element
         {
             string output = "";
             for (int i = 0; i < arr.Length; i++)
@@ -379,7 +379,7 @@ namespace simpleTEST
             return output;
         }
 
-        private static double[] cDoubleArr(string[] arr)
+        private static double[] cDoubleArr(string[] arr)//converts a string array to double array for input parsing (there's probably an inherent way to do this but idk it)
         {
             double[] output;
             output = new double[arr.Length];
@@ -391,7 +391,9 @@ namespace simpleTEST
             return output;
         }
 
-        private static string PaddingFunc(string rowName, string line, int padValue) //This function takes an input string of 1 row from templaterun_click (3 values separated by spaces) and pads the spaces until it reaches a maximum character limit
+
+        //This function takes an input string of 1 row from templaterun_click (3 values separated by spaces) and pads the spaces until it reaches a maximum character limit
+        private static string PaddingFunc(string rowName, string line, int padValue) //args rowName (header to add at start), line (string to pad), padvalue (maximum padding limit)
         {
             string output = rowName;
             string[] lineArr = line.Split(" ");
