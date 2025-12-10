@@ -379,6 +379,7 @@
             LiquidLiterCheck.TabIndex = 19;
             LiquidLiterCheck.Text = "Liter";
             LiquidLiterCheck.UseVisualStyleBackColor = true;
+            LiquidLiterCheck.CheckedChanged += LiquidLiterCheck_CheckedChanged;
             // 
             // LiquidFlozCheck
             // 
@@ -389,6 +390,7 @@
             LiquidFlozCheck.TabIndex = 21;
             LiquidFlozCheck.Text = "floz";
             LiquidFlozCheck.UseVisualStyleBackColor = true;
+            LiquidFlozCheck.CheckedChanged += LiquidFlozCheck_CheckedChanged;
             // 
             // LiquidGallonCheck
             // 
@@ -399,6 +401,7 @@
             LiquidGallonCheck.TabIndex = 20;
             LiquidGallonCheck.Text = "gal";
             LiquidGallonCheck.UseVisualStyleBackColor = true;
+            LiquidGallonCheck.CheckedChanged += LiquidGallonCheck_CheckedChanged;
             // 
             // LiquidPriceBox
             // 

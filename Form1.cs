@@ -27,7 +27,7 @@ namespace simpleTEST
 
         }
 
-        //exclusive checkbox behavior
+        //exclusive checkbox behavior for tab 1
         private void kgcheck_CheckedChanged(object sender, EventArgs e)
         {
             if (kgcheck.Checked)
@@ -70,7 +70,33 @@ namespace simpleTEST
                 Liquidcheck.Checked = false;
             }
         }
+        //exclusive checkbox behavior for liquids tab
+        private void LiquidLiterCheck_CheckedChanged(object sender, EventArgs e)
+        {
+            if (LiquidLiterCheck.Checked == true) 
+            {
+                LiquidGallonCheck.Checked = false;
+                LiquidFlozCheck.Checked = false;
+            }
+        }
 
+        private void LiquidGallonCheck_CheckedChanged(object sender, EventArgs e)
+        {
+            if (LiquidGallonCheck.Checked == true) 
+            {
+                LiquidLiterCheck.Checked = false;
+                LiquidFlozCheck.Checked = false;
+            }
+        }
+
+        private void LiquidFlozCheck_CheckedChanged(object sender, EventArgs e)
+        {
+            if (LiquidFlozCheck.Checked == true) 
+            {
+                LiquidGallonCheck.Checked = false;
+                LiquidLiterCheck.Checked = false;
+            }
+        }
         //calculation
         private void Run_Click_1(object sender, EventArgs e)
         {
@@ -145,7 +171,7 @@ namespace simpleTEST
                     priceperkilo = priceperkilo + 3;
                 }
 
-                if(Liquidcheck.Checked)
+                if (Liquidcheck.Checked)
                 {
                     priceperkilo = priceperkilo + 4;
                 }
@@ -154,15 +180,15 @@ namespace simpleTEST
                 {
                     if (Amountbox.Text.Split(";")[2] == "s")
                     {
-                    priceperkilo = priceperkilo + 3;
+                        priceperkilo = priceperkilo + 3;
                     }
                     if (Amountbox.Text.Split(";")[2] == "l")
                     {
-                    priceperkilo = priceperkilo + 4;
+                        priceperkilo = priceperkilo + 4;
                     }
                     if (Amountbox.Text.Split(";")[2] == "n")
                     {
-                    priceperkilo = priceperkilo;
+                        priceperkilo = priceperkilo;
                     }
                 }
 
@@ -375,8 +401,8 @@ namespace simpleTEST
                 }
             }
             catch //bad error handling but it stops the program from crashing
-            { 
-                TemplateOutputBox.Text = "An error occurred! Check your input formatting and try again."; 
+            {
+                TemplateOutputBox.Text = "An error occurred! Check your input formatting and try again.";
             }
         }
 
@@ -388,7 +414,7 @@ namespace simpleTEST
             string output = "";
             for (int i = 0; i < arr.Length; i++)
             {
-                output = output + prewrap + arr[i] +postwrap + " ";
+                output = output + prewrap + arr[i] + postwrap + " ";
             }
             return output;
         }
@@ -416,8 +442,8 @@ namespace simpleTEST
             {
                 output = output + " ";
             }
-            
-            for(int j = 0; j < lineArr.Length-1; j++)
+
+            for (int j = 0; j < lineArr.Length - 1; j++)
             {
                 while (lineArr[j].Length < padValue)
                 {
@@ -425,11 +451,10 @@ namespace simpleTEST
                 }
                 output = output + lineArr[j];
             }
-            
-            
+
+
             return output;
         }
-
 
     }
 }
