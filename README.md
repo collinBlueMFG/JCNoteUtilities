@@ -3,15 +3,17 @@
 <img width="300" height="300" alt="tab2JCNOTEGEN" src="https://github.com/user-attachments/assets/41fccd24-5a26-4bb3-a5ea-944c1aa6e224" />
 <img width="300" height="300" alt="tab3JCNOTEGEN" src="https://github.com/user-attachments/assets/fa9cde1e-de00-4401-8ab2-507c32af34e9" />
 <h2>Example outputs:</h2>
-<p>tab 1:</p>
+<p>Tab 1:</p>
 <pre>12/10/2025 <br/>Priced from: 1kgs = $1 ($1/kg) landed price: $1/kg</pre>
+<p>(Inputs can also be entered into the amount field separated by a semicolon, i.e. 1;kgs;[s/l/n])</p>
 
-<p>tab 2:</p>
+<p>Tab 2:</p>
 <pre>12/10/2025
 Density: 1
-Priced from: 1 = $1 ($1/kg) landed price: $5/kg</pre>
+Priced from: 1L = $1 ($1/kg) landed price: $5/kg </pre>
+<p>(Inputs can also be entered into the amount field separated by a semicolon, i.e. 1;L)</p>
 
-<p>tab 3:</p>
+<p>Tab 3:</p>
 <pre>
                1              2              3              
 NEEDED:        1kg            2kg            3kg            
