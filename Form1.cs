@@ -289,7 +289,7 @@ namespace simpleTEST
                 string[] sUnitsArr;
 
                 double[] neededArr;
-                string[] sNeededArr;//lol sneed
+                string[] sNeededArr;//formerly chuck's
 
                 double[] moqArr;
                 string[] sMoqArr;
@@ -332,18 +332,21 @@ namespace simpleTEST
 
 
                 //Price per kilo
-                sPriceArr = TemplatePricesBox.Text.Split(","); //["x","y","z"]
+                //sPriceArr = TemplatePricesBox.Text.Split(","); //["x","y","z"]
+                //priceArr = cDoubleArr(sPriceArr);
+                sPriceArr = singleOrListInput(TemplatePricesBox.Text, unitsArr.Length);
                 priceArr = cDoubleArr(sPriceArr);
 
-                //landed price per kilo
-                sLPriceArr = TemplateLandingBox.Text.Split(",");//["x","y","z"]
 
+                //landed price per kilo
+                //sLPriceArr = TemplateLandingBox.Text.Split(",");//["x","y","z"]
+                //lpriceArr = cDoubleArr(sLPriceArr);
+                sLPriceArr = singleOrListInput(TemplateLandingBox.Text, unitsArr.Length);
                 lpriceArr = cDoubleArr(sLPriceArr);
 
-                //list of MOQ's
-                sMoqArr = TemplateMoqInput.Text.Split(",");//["xkg", "ykg", "zkg"]
+                //list of MOQ's, if only 1 MOQ then create array with length of unitsarr where all elements are that value
+                sMoqArr = singleOrListInput(TemplateMoqInput.Text, unitsArr.Length);
                 moqArr = cDoubleArr(sMoqArr);
-
 
                 //initialize the "purchase" row, figure out how much to order per each MOQ to fit needed
                 purchaseArr = new double[moqArr.Length];
@@ -408,7 +411,23 @@ namespace simpleTEST
 
 
         //FUNCTION BLOCK
-
+        private static string[] singleOrListInput(string input, int len)
+        {
+            string[] arr;
+            if(input.Contains(",") == false)
+            {
+                arr = new string[len];
+                for(int i = 0; i<arr.Length;i++)
+                {
+                    arr[i] = input;
+                }
+            }
+            else 
+            {
+                arr = input.Split(",");
+            }
+            return arr;
+        }
         private static string initiaLine(string[] arr, string prewrap, string postwrap)//this initializes the array elements and adds pre/post strings to each element
         {
             string output = "";
