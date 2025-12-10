@@ -140,17 +140,31 @@ namespace simpleTEST
 
 
                 //landed pricing
-                if (Solidcheck.Checked || Amountbox.Text.Split(";")[2] == "s")
+                if (Solidcheck.Checked)
                 {
                     priceperkilo = priceperkilo + 3;
                 }
 
-                if (Liquidcheck.Checked || Amountbox.Text.Split(";")[2] == "l")
+                if(Liquidcheck.Checked)
                 {
                     priceperkilo = priceperkilo + 4;
                 }
 
-
+                if (Amountbox.Text.Contains(";"))
+                {
+                    if (Amountbox.Text.Split(";")[2] == "s")
+                    {
+                    priceperkilo = priceperkilo + 3;
+                    }
+                    if (Amountbox.Text.Split(";")[2] == "l")
+                    {
+                    priceperkilo = priceperkilo + 4;
+                    }
+                    if (Amountbox.Text.Split(";")[2] == "n")
+                    {
+                    priceperkilo = priceperkilo;
+                    }
+                }
 
                 output = DateTime.Today.ToString("MM/dd/yyyy") + "\r\nPriced from: " + Amountbox.Text.Split(";")[0] + unit + " = $" + Math.Round(price, 2) + " ($" + Math.Round((price / quantity), 2) + "/kg) landed price: $" + Math.Round(priceperkilo, 2) + "/kg";
                 if (copycheck.Checked)
