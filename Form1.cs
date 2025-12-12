@@ -322,7 +322,7 @@ namespace simpleTEST
 
                 for (int i = 0; i < unitsArr.Length; i++)
                 {
-                    neededArr[i] = unitsArr[i] * double.Parse(TemplateUnitKgInput.Text);
+                    neededArr[i] = Math.Round(unitsArr[i] * double.Parse(TemplateUnitKgInput.Text), 2);
                     sNeededArr[i] = neededArr[i].ToString();
                 }
                 //____________________
