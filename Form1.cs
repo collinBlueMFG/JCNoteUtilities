@@ -150,8 +150,15 @@ namespace simpleTEST
                 }
 
 
-                price = double.Parse(Pricebox.Text);
-
+                //set base price variable
+                if (Amountbox.Text.Contains(";"))
+                {
+                    price = double.Parse(Amountbox.Text.Split(";")[3]);
+                }
+                else
+                {
+                    price = double.Parse(Pricebox.Text);
+                }
 
 
                 //set price per kilo
